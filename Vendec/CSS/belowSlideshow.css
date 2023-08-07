@@ -8,23 +8,29 @@
     height: 2000px;
     
   }
-  .recent.visible {
-    bottom: 0;
-    opacity: 1;
-    transition: all 0.5s ease;
-  }
-.recentTitle{
-    text-align: center;
-    width:100%;
-    padding: 6em;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgb(248, 242, 243);
+.recent.visible {
+  bottom: 0;
+  opacity: 1;
+  transition: all 0.5s ease;
 }
 
+.recentTitle {
+  text-align: center;
+  width: 100%;
+  padding: 6em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url("../comPhotos/Black_Hole_Wallpaper.jpeg");
+  background-position: -80px -130px;
+  clip-path: ellipse(80% 100% at 50% 0%);
+  color: var(--white);
+  text-shadow: 2px 2px 2px var(--red);
+}
+
+.shadowTitle{
+  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.65));
+}
 .card-container {
-    background-color: rgb(248, 242, 243);
-    padding: 10em;
-    padding-top: 0;
+    padding: 7em 8em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -38,6 +44,9 @@
     position: relative;
     overflow: hidden;
     flex: 1 1 calc(25% - 30px);
+    border: 1px solid var(--black);
+    border-radius: 30px;
+    box-shadow: 6px 6px 8px 7px rgba(0, 0, 0, 0.3);
 }
 .card-normal,.card {
   height: 200px;

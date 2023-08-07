@@ -9,8 +9,9 @@ section {
     position: fixed;
     top: 0;
     right: 0;
-    width: 30%;
-    min-height: 100%;
+    width: 80vw;
+    max-width: 500px;
+    height: 100%;
     padding: 5em;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
     backdrop-filter: blur(20px);
@@ -20,7 +21,6 @@ section {
     clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
     text-shadow: 1px 1px var(--black);
     font-family: 'Kubo Sans', sans-serif;
-   
 
   }
   @supports (backdrop-filter: blur(10px)) {
@@ -83,8 +83,9 @@ section {
   
   .level-1 h3 {
     font-weight: 200;
-    font-size: 4.4rem;
+   font-size: 4vw;
     text-transform: uppercase;
+    text-shadow: 2px 2px 12px var(--black);
   }
   
   .level-1 p {

@@ -8,6 +8,7 @@ body{
     height: 100vh;
     position: relative;
     overflow: hidden;
+    
 }
 
 .firstPicture{  
@@ -49,10 +50,12 @@ body{
           justify-content: center;
   -webkit-align-items: center;
           align-items: center;
+      
 }
 
 .carousel-cell img {
   display: block;
+  
   max-width: 100%;
   max-height: 100%;
   /* dim unselected */
@@ -121,4 +124,3 @@ body{
 .flickity-prev-next-button:disabled {
   display: none;
 }
-
