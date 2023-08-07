@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="stylesAdvanced.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="header-advanced">
+            <div id="logo">
+                <span class="blue">G</span>
+                <span class="red">o</span>
+                <span class="yellow">o</span>
+                <span class="blue">g</span>
+                <span class="green">l</span>
+                <span class="red">e</span>
+            </div>
+            <a href="index.html">Google Search</a>
+        </div>
+        <div id="container-advanced">
+            <h1>Advanced Search</h1>
+            <hr>
+            <div class="titles">
+                <h3>Criteria for searching pages</h3>
+                <h3>Way of entering in the search field:</h3>
+            </div>
+            <form id="advancedSearchForm" onsubmit="searchQuery(event)">
+                <div class="form-contents">
+                    <div class="criteria">
+                        <div class="label">All these words:</div>
+                        <div class="label">This exact word or phrase:</div>
+                        <div class="label">Any of these words:</div>
+                        <div class="label">None of these words:</div>
+                    </div>
+                    <div class="criteriaValue">
+                        <input type="text" id="allWords" placeholder="All these words">
+                        <input type="text" id="exactPhrase" placeholder="This exact word or phrase">
+                        <input type="text" id="anyWords" placeholder="Any of these words">
+                        <input type="text" id="noneWords" placeholder="None of these words">
+                    </div>
+                    <div class="criteriaHelp">
+                        <div class="help">Enter the important words: tricolor rat terrier</div>
+                        <div class="help">Enter the exact words in quotes: "rat terrier"</div>
+                        <div class="help">Insert the OR operator between all the required words: miniature OR standard</div>
+                        <div class="help">Enter a minus sign before the words you don't want: -rodent, -"Jack Russell"</div>
+                    </div>
+                </div>
+                <div class="criteriaSubmit"> 
+                    <input type="submit" value="Advanced Search">
+                </div>
+            </form>
+        </div>
+        <footer>
+            <div class="countryLabel">
+                <h4>Česko</h4>
+            </div>
+            <hr id="footerLine">
+            <div class="others" >
+                <div class="about">
+                    <h4><a href="https://about.google/?utm_source=google-CZ&utm_medium=referral&utm_campaign=hp-footer&fg=1">About company Google</a></h4>
+                    <h4><a href="https://ads.google.com/intl/cs_cz/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">Advert</a></h4>
+                    <h4><a href="https://www.google.cz/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none">Firm</a></h4>
+                    <h4><a href="https://www.google.com/search/howsearchworks/?fg=1">How does search works</a></h4>
+                </div>
+                <div class="environment">
+                    <a href="https://sustainability.google/intl/cs/carbon-free/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content="><img src="leaf.webp">
+                    <h4><a href="https://sustainability.google/intl/cs/carbon-free/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=">3rd decade helping with climate changes</a></h4>
+                </div>
+                <div class="settings">
+                    <h4><a href="https://policies.google.com/privacy?hl=cs&fg=1">Personal information</a></h4>
+                    <h4><a href="https://policies.google.com/terms?hl=cs&fg=1">Agrrements</a></h4>
+                    <h4><a href="#">Settings</a></h4>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

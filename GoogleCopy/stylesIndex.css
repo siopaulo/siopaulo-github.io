@@ -1,0 +1,12 @@
+.button-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#logo{
+    margin: 65px;
+    font-size: 140px;
+    color:whitesmoke;
+    word-spacing: -25px;
+}
