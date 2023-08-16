@@ -1,0 +1,454 @@
+
+:root{
+    --black: #242424;
+    --white: #f5f5f5;
+    --pill: #e0d4be;
+    --red: #A21712;
+    --blue: #171b7d;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  background:radial-gradient(var(--black),#081016);
+  
+}
+
+
+ul {
+  list-style: none;
+}
+
+.page-wrap {
+  position: relative;
+}
+
+header {
+  width: 100%;
+  min-height: calc(100vh-80px);
+  overflow-x: hidden;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  padding: 1em 5em;
+  display: flex;
+  justify-content: space-between;
+  transition: 1s;
+}
+
+nav h1 {
+  font-size: clamp(1.2rem, 6vw, 3rem);
+  font-weight: normal;
+  text-transform: uppercase;
+  color: var(--pill);
+  font-size: 1.3rem;
+  background-color: var(--red);
+  padding: 5px 10px;
+}
+
+nav ul {
+  display: flex;
+  color: var(--white);
+}
+
+nav ul li:not(#burger) {
+  visibility: hidden;
+  margin-right: 1.5em;
+}
+
+#burger {
+  width: min-content;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+#burger span {
+  display: block;
+  height: 3px;
+  width: 22px;
+  background-color: var(--red);
+  border-radius: 200px;
+  transition: transform 0.3s 0.3s;
+}
+
+.active span:nth-of-type(1) {
+  transform: translateY(-3px) scaleX(1.3);
+}
+
+.active span:nth-of-type(3) {
+  transform: translateY(3px) scaleX(1.3);
+}
+
+
+main {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+article {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--i);
+}
+
+.hero-info {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 8;
+}
+
+.hero-info h2 {
+  font-size: clamp(2rem, 9vw, 5rem);
+  line-height: clamp(2rem, 9vw, 5rem);
+  text-transform: uppercase;
+}
+
+.hero-info h1 {
+  color: var(--white);
+  font-size: clamp(3.2rem, 10vw, 7rem);
+  line-height: clamp(3.2rem, 10vw, 7rem);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-info h3 {
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin-top: 2em;
+}
+
+@supports (-webkit-text-stroke: 3px var(--pill)) {
+  .hero-info h2 {
+    color: transparent;
+    -webkit-text-stroke: 3px var(--red);
+    text-shadow: none;
+  }
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.hi-1 {
+  background-image: url("../comPhotos/dolomiti-62.webp");
+}
+
+.hi-2 {
+  background-image: url("../comPhotos/norsko-1-4.webp");
+}
+
+.hi-3 {
+  background-image: url("../comPhotos/svatba-624.webp");
+}
+
+
+.hi-4 {
+  background-image: url("../comPhotos/dolomiti-135.webp");
+}
+
+.hi-5 {
+  background-image: url("../comPhotos/norsko-3-2.webp");
+}
+
+
+
+
+
+@media screen and (max-width: 750px) {
+  nav {
+    padding: 3em 3em;
+    font-size: 10px;
+    transition: 1s;
+  }
+
+  nav h1 {
+    font-size: 0.9rem;
+    visibility: hidden;
+  }
+}
+
+
+
+
+footer {
+    background-color: #191919;
+    padding: 2em 0;
+    color: var(--white);
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: calc(33.33% - 20px);
+    margin-bottom: 1.5em;
+    padding-left: 15px; /* Left padding for consistency */
+    padding-right: 15px; /* Right padding for consistency */
+}
+
+.footer-section h4 {
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--red);
+}
+
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around; /* Ensuring even space around the icons */
+  margin-top: 1em;  /* Space from the content above */
+  gap: 1em;
+}
+
+.social-links a {
+  font-size: 2em; /* Increased size */
+  color: var(--white);
+  margin: 0 15px; /* Increased space between each icon for better clarity */
+  transition: all 0.3s ease;
+  padding: 5px; /* Adjusted padding */
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: var(--red);
+}
+
+@media screen and (max-width: 750px) {
+    .footer-section {
+        width: 50%;
+        padding-left: 15px; /* Padding on smaller screens */
+        padding-right: 15px; /* Padding on smaller screens */
+    }
+    
+    .social-links {
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        gap: 0.5em;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .footer-section {
+        width: 100%;
+        padding-left: 15px; /* Padding on even smaller screens */
+        padding-right: 15px; /* Padding on even smaller screens */
+    }
+
+    .social-links{
+        gap: 5em;
+    }
+}
+
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.photo-section {
+  padding: 2rem 10%; /* Top-bottom padding and left-right padding */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Spacing between images */
+  justify-content: center; /* Center the images if they don't occupy full width */
+  background-color: red;
+}
+
+.photo-wrapper {
+  flex: 1;
+  max-width: 600px; /* Maximum width for images */
+  text-align: center;
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Rounded corners for aesthetic */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A slight shadow to lift the image */
+}
+
+.photo-wrapper p {
+  margin-top: 1rem;
+  font-style: italic; /* Make the story text italic */
+}
+
+/* Modified Section Styles */
+.custom-section {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+  max-width: 600px;
+  height: 100%;
+  padding: 5em;
+  background: linear-gradient(145deg, rgba(0,0,0,0.9), rgba(10,10,10,0.9));
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  font-family: 'Kubo Sans', sans-serif;
+  transition: 0.5s;
+  text-align: center;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+/* Section Links */
+.section-container {
+  padding-top: 7.5em;
+}
+
+.level-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+}
+
+.level-1 h3 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.2rem;
+}
+
+
+.level-1 a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 2.8rem; /* Increased from 2.6rem */
+  transition: color 0.3s;
+  display: inline-block;
+  padding: 0.5rem 0;
+}
+
+.level-1 a:hover {
+  color: var(--red);
+}
+
+.sublinks {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.sublinks.open {
+  max-height: 220px;
+  margin-top: -2em;
+  transition: 0.5s;
+}
+
+.sublinks a {
+  display: block;
+  padding: 0.4em 1em; /* Adjusted padding to move it up and right */
+  font-size: 2rem;
+  color: #F61712;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.sublinks a:hover {
+  color: var(--white);
+}
+
+.custom-section {
+  padding: 4em 1em;
+  width: 30em;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.custom-section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 750px) {
+  section {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  .custom-section {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .custom-section .level-1 {
+    grid-gap: 1.2rem;
+  }
+
+  .custom-section h3 {
+    font-size: 2.3rem;
+  }
+}
