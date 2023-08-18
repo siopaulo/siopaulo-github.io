@@ -16,18 +16,12 @@
   scroll-behavior: smooth;
 }
 
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
 
 body {
   font-family: "Poppins", sans-serif;
   position: relative;
   min-height: 100vh;
   background:radial-gradient(var(--black),#081016);
-  
 }
 
 
@@ -101,110 +95,6 @@ nav ul li:not(#burger) {
   transform: translateY(3px) scaleX(1.3);
 }
 
-
-main {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-article {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--i);
-}
-
-.hero-info {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  z-index: 8;
-}
-
-.hero-info h2 {
-  font-size: clamp(2rem, 9vw, 5rem);
-  line-height: clamp(2rem, 9vw, 5rem);
-  text-transform: uppercase;
-}
-
-.hero-info h1 {
-  color: var(--white);
-  font-size: clamp(3.2rem, 10vw, 7rem);
-  line-height: clamp(3.2rem, 10vw, 7rem);
-  text-transform: uppercase;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.hero-info h3 {
-  color: var(--white);
-  font-size: 1.6rem;
-  font-weight: normal;
-  margin-top: 2em;
-}
-
-@supports (-webkit-text-stroke: 3px var(--pill)) {
-  .hero-info h2 {
-    color: transparent;
-    -webkit-text-stroke: 3px var(--red);
-    text-shadow: none;
-  }
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-
-.hi-1 {
-  background-image: url("../comPhotos/dolomiti-62.webp");
-}
-
-.hi-2 {
-  background-image: url("../comPhotos/norsko-1-4.webp");
-}
-
-.hi-3 {
-  background-image: url("../comPhotos/svatba-624.webp");
-}
-
-
-.hi-4 {
-  background-image: url("../comPhotos/dolomiti-135.webp");
-}
-
-.hi-5 {
-  background-image: url("../comPhotos/norsko-3-2.webp");
-}
-
-
-
-
-
-@media screen and (max-width: 750px) {
-  nav {
-    padding: 3em 3em;
-    font-size: 10px;
-    transition: 1s;
-  }
-
-  nav h1 {
-    font-size: 0.9rem;
-    visibility: hidden;
-  }
-}
-
-
-
-
 footer {
     background-color: #191919;
     padding: 2em 0;
@@ -277,33 +167,6 @@ footer {
   color: var(--red);
 }
 
-@media screen and (max-width: 750px) {
-    .footer-section {
-        width: 50%;
-        padding-left: 15px; /* Padding on smaller screens */
-        padding-right: 15px; /* Padding on smaller screens */
-    }
-    
-    .social-links {
-        flex-basis: 100%;
-        justify-content: center;
-        margin: 0;
-        padding: 0;
-        gap: 0.5em;
-    }
-}
-
-@media screen and (max-width: 560px) {
-    .footer-section {
-        width: 100%;
-        padding-left: 15px; /* Padding on even smaller screens */
-        padding-right: 15px; /* Padding on even smaller screens */
-    }
-
-    .social-links{
-        gap: 5em;
-    }
-}
 
 
 .page-wrap {
@@ -311,32 +174,66 @@ footer {
   flex-direction: column;
   min-height: 100vh;
 }
+/* Styling the h2 title */
+.section-title {
+  font-size: 4.5rem;
+  text-align: center;
+  color: var(--pill);
+  margin-top: 5rem;
+  margin-bottom: 4rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s;
+}
+
+/* Adjustments to the photo section */
 .photo-section {
-  padding: 2rem 10%; /* Top-bottom padding and left-right padding */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; /* Spacing between images */
-  justify-content: center; /* Center the images if they don't occupy full width */
-  background-color: red;
+  background: rgba(0, 0, 0, 0.65);  /* Dark overlay */
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+  margin: 3rem auto;  /* Centering the section and adding top and bottom margin */
+  width: 70%;  /* Width adjustment */
+  padding: 2rem;  /* Internal padding for content */
+}
+
+.photo-separator {
+  width: 60%;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);  /* Subtle line */
+  margin: 2rem 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .photo-wrapper {
-  flex: 1;
-  max-width: 600px; /* Maximum width for images */
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.photo-wrapper:nth-child(odd) {
+  flex-direction: row-reverse;
 }
 
 .photo-wrapper img {
-  width: 100%;
-  height: auto;
-  border-radius: 15px; /* Rounded corners for aesthetic */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A slight shadow to lift the image */
+  max-width: 55%;  /* Increased from 50% to make them slightly bigger */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .photo-wrapper p {
-  margin-top: 1rem;
-  font-style: italic; /* Make the story text italic */
+flex: 1;
+font-size: 1rem;
+color: white;
+line-height: 1.5;
+text-align: justify;
 }
+
 
 /* Modified Section Styles */
 .custom-section {
@@ -428,20 +325,50 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.testimonials-carousel {
+  width: 70%;
+  margin: 2rem auto;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 2rem;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Testimonial item styles */
+.testimonial {
+  display: flex;           /* Enable flexbox */
+  flex-direction: column;  /* Stack children vertically */
+  justify-content: center; /* Center children vertically */
+  align-items: center;     /* Center children horizontally */
+  height: 400px;           /* Set a fixed height for the slide */
+  position: relative;   
+  text-align: center;   /* Relative positioning for positioning children */
+}
+
+/* Styling for the images within the testimonial */
+.testimonial img {
+  max-width: 100%;
+  object-fit: contain;     /* Ensure images maintain their aspect ratio */
+  margin: 0 auto;  
+}
+
+.testimonial span {
+  font-size: 2.2rem;
+  color: var(--pill);
+  display: block;  /* Change span to block level for better control */
+  margin-top: 0.8em;
+}
+
 @media screen and (max-width: 750px) {
-  section {
+  .custom-section {
+    text-align: center;
     width: 100vw;
     max-width: 100vw;
     padding: 2em;
     background-color: rgba(0, 0, 0, 0.9);
     overflow-x: hidden;
     height: auto;
-  }
-
-  .custom-section {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
   }
   
   .custom-section .level-1 {
@@ -450,5 +377,57 @@ footer {
 
   .custom-section h3 {
     font-size: 2.3rem;
+  }
+  .footer-section {
+      width: 50%;
+      padding-left: 15px; /* Padding on smaller screens */
+      padding-right: 15px; /* Padding on smaller screens */
+  }
+  
+  .social-links {
+      flex-basis: 100%;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      gap: 0.5em;
+  }
+  nav {
+    padding: 3em 3em;
+    font-size: 10px;
+    transition: 1s;
+  }
+
+  nav h1 {
+    font-size: 0.9rem;
+    visibility: hidden;
+  }
+  .photo-wrapper{
+        flex-direction: column !important;
+        align-items: center !important;   
+        width: 100%;
+    }
+
+  .photo-wrapper img {
+    width: 100% !important;  /* Image takes up 90% width of the photo section */
+    margin-bottom: 1rem !important;
+    order: -1;
+  }
+
+  .photo-wrapper p {
+    text-align: center !important;  /* Center the text */
+    width: 100% !important;  /* Allow the text to take the full width */
+    padding: 0 1rem !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .footer-section {
+      width: 100%;
+      padding-left: 15px; /* Padding on even smaller screens */
+      padding-right: 15px; /* Padding on even smaller screens */
+  }
+
+  .social-links{
+      gap: 5em;
   }
 }
