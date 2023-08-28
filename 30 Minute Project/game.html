@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Minute Project</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styling the navigation */
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        /* Centering Matrix on the Page */
+        main {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling the shapes */
+        .square {
+            width: 50px;
+            height: 50px;
+            background-color: dodgerblue;
+            border: 1px solid #333;
+            box-sizing: border-box;
+        }
+
+        .triangle {
+            width: 50px;
+            height: 43.3px; /* height of an equilateral triangle with 50px side */
+            background-color: dodgerblue;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .triangle:nth-child(odd) {
+            transform: rotateX(180deg);
+        }
+
+        .hexagon {
+            width: 57.74px;
+            height: 50px;
+            background-color: dodgerblue;
+            clip-path: polygon(50% 0%, 0% 50%, 50% 100%, 100% 100%, 100% 50%, 50% 0%);
+        }
+
+        /* Footer */
+        footer {
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            background: #333;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" onclick="generateMatrix('square')">Square</a>
+            <a href="#" onclick="generateMatrix('triangle')">Triangle</a>
+            <a href="#" onclick="generateMatrix('hexagon')">Hexagon</a>
+        </nav>
+    </header>
+    <main id="matrixArea">
+        <!-- Matrix will be generated here -->
+    </main>
+    <footer>
+        30 Minute Project © 2023
+    </footer>
+    <script>
+        function generateMatrix(shapeType) {
+            let matrixArea = document.getElementById('matrixArea');
+            matrixArea.innerHTML = ''; // Clear the main content
+
+            let matrixSize = 5;  // 5x5 matrix for simplicity
+
+            for (let i = 0; i < matrixSize * matrixSize; i++) {
+                let shape = document.createElement('div');
+                shape.classList.add(shapeType);
+                matrixArea.appendChild(shape);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

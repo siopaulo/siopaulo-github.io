@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Styling the navigation */
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #333;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #333;
+}
+
+/* Styling the shapes */
+.shape {
+    margin: 0;
+    display: inline-block;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: dodgerblue;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid dodgerblue;
+}
+
+.hexagon {
+    width: 57.74px;
+    height: 50px;
+    background-color: dodgerblue;
+    position: relative;
+    margin-right: -28.87px;
+}
+
+.hexagon:nth-child(even) {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 28.87px solid transparent;
+    border-right: 28.87px solid transparent;
+}
+
+.hexagon:before {
+    top: -25px;
+    border-bottom: 25px solid dodgerblue;
+}
+
+.hexagon:after {
+    bottom: -25px;
+    border-top: 25px solid dodgerblue;
+}
+
+/* Footer */
+footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    background-color: #f1f1f1;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
