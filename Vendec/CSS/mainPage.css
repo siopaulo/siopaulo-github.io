@@ -251,7 +251,7 @@ article {
   font-size: clamp(3.2rem, 10vw, 7rem);
   line-height: clamp(3.2rem, 10vw, 7rem);
   text-transform: uppercase;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-info h3 {
@@ -263,9 +263,9 @@ article {
 
 @supports (-webkit-text-stroke: 3px var(--pill)) {
   .hero-info h2 {
-    color: transparent;
-    -webkit-text-stroke: 3px var(--red);
-    text-shadow: none;
+    color: var(--red);
+    -webkit-text-stroke: 3px var(--white);
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
   }
 }
 
@@ -399,7 +399,7 @@ article {
     font-size: 30px;
 }
 .card-normal,.card {
-  height: 600px;
+  height: 500px;
 }
 .card-large {
     flex: 2 2 calc(50% - 30px);

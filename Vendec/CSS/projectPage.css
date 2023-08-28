@@ -197,12 +197,14 @@ footer {
 }
 
 .photo-separator {
-  width: 60%;
+  width: 96%;
   border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);  /* Subtle line */
-  margin: 2rem 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(182, 228, 255, 0.836) 50%, rgba(255,255,255,0) 100%);
+  margin: 3rem 0;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .photo-wrapper {
@@ -225,6 +227,7 @@ footer {
   transition: 0.3s;
   border: 1px solid transparent;
 }
+
 .photo-wrapper img:hover {
   cursor: pointer;
   box-shadow: 4px 4px 8px 4px rgba(3, 0, 12, 0.6);
@@ -235,7 +238,7 @@ footer {
 .photo-wrapper .project-description {
 flex: 1;
 font-size: 1em;
-color: var(--pill);
+color: var(--white);
 line-height: 1.5;
 text-align: justify;
 }
@@ -373,6 +376,48 @@ text-align: justify;
   color: var(--pill);
   display: block;  /* Change span to block level for better control */
   margin-top: 0.8em;
+}
+.carousel-modal {
+  display: none; /* Initially hidden */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  position: fixed; /* Makes modal fixed on the screen */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Takes up the full viewport width */
+  height: 100vh; /* Takes up the full viewport height */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  z-index: 1000; /* Ensure it's above other content */
+}
+@keyframes fadeIn {
+  0% { opacity: 0.0; }
+  90% { opacity: 0.01; }
+  100% { opacity: 1; }
+}
+.carousel-modal .carousel-container {
+  width: 80%; /* Adjust this based on your needs */
+  max-width: 600px; /* Set a maximum width if needed */
+  margin: 0 auto; /* Center it horizontally */
+  height: 400px;
+  opacity: 0;
+  animation: fadeIn 0.35s forwards;
+}
+
+.carousel-container img {
+  max-width: 100%; 
+  height: auto;
+}
+
+.carousel-modal .carousel-container img:first-child {
+  display: block;
+}
+
+#morePictures{
+  color: var(--pill);
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-top: 1em;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 1050px) {
