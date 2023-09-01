@@ -21,7 +21,11 @@ body {
   font-family: "Poppins", sans-serif;
   position: relative;
   min-height: 100vh;
-  background:radial-gradient(var(--black),#081016);
+  background-image: url('../comPhotos/resized/1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 
@@ -192,12 +196,14 @@ footer {
   border-radius: 15px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
   margin: 3rem auto;  /* Centering the section and adding top and bottom margin */
-  width: 70%;  /* Width adjustment */
-  padding: 2rem;  /* Internal padding for content */
+  width: 89%;  /* Width adjustment */
+  padding: 1.5em;  /* Internal padding for content */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .photo-separator {
-  width: 96%;
+  width: 100%;
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(182, 228, 255, 0.836) 50%, rgba(255,255,255,0) 100%);
@@ -210,9 +216,9 @@ footer {
 .photo-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1.5em;
   align-items: center;
-  width: 97%;
+  width: 100%;
   margin: 1rem auto;
 }
 
@@ -225,13 +231,12 @@ footer {
   border-radius: 8px;
   box-shadow: 6px 6px 6px 7px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
-  border: 1px solid transparent;
+  border: 1px solid var(--black);
 }
 
 .photo-wrapper img:hover {
   cursor: pointer;
   box-shadow: 4px 4px 8px 4px rgba(3, 0, 12, 0.6);
-  transform: scale(1.01);
   transition: 0.3s;
 }
 
@@ -344,13 +349,14 @@ text-align: justify;
 }
 
 .testimonials-carousel {
-  width: 70%;
-  margin: 2rem auto;
+  width: 89%;
+  margin: 2em auto;
   background: rgba(0, 0, 0, 0.65);
-  padding: 2rem;
+  padding: 1em;
   border-radius: 15px;
   position: relative;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+  padding-bottom: 0.5em;
 }
 
 /* Testimonial item styles */
@@ -372,10 +378,10 @@ text-align: justify;
 }
 
 .testimonial span {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--pill);
   display: block;  /* Change span to block level for better control */
-  margin-top: 0.8em;
+  margin-top: 0.2em;
 }
 .carousel-modal {
   display: none; /* Initially hidden */
@@ -420,37 +426,11 @@ text-align: justify;
   text-decoration: underline;
 }
 
-@media screen and (max-width: 1050px) {
-  .custom-section {
-    text-align: center;
-    width: 100vw;
-    max-width: 100vw;
-    padding: 2em;
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow-x: hidden;
-    height: auto;
-  }
+@media screen and (max-width: 1000px){
   
-  .custom-section .level-1 {
-    grid-gap: 1.2rem;
-  }
+}
+@media screen and (max-width: 768px) {
 
-  .custom-section h3 {
-    font-size: 2.3rem;
-  }
-  .footer-section {
-      width: 50%;
-      padding-left: 15px; /* Padding on smaller screens */
-      padding-right: 15px; /* Padding on smaller screens */
-  }
-  
-  .social-links {
-      flex-basis: 100%;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      gap: 0.5em;
-  }
   nav {
     padding: 3em 3em;
     font-size: 10px;
@@ -461,6 +441,30 @@ text-align: justify;
     font-size: 0.9rem;
     visibility: hidden;
   }
+  section {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  .custom-section {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    border-radius: 0;
+  }
+
+.custom-section .level-1 {
+  grid-gap: 1.2rem;
+}
+
+.custom-section h3 {
+  font-size: 2.3rem;
+}
+  
   .photo-wrapper{
       flex-direction: column-reverse !important;
       align-items: center !important;   
@@ -483,7 +487,28 @@ text-align: justify;
   .project-description h4{
     font-size: 1.5em;
   }
+  .footer-section {
+    width: 50%;
+    padding-left: 15px; /* Padding on smaller screens */
+    padding-right: 15px; /* Padding on smaller screens */
+}
 
+.social-links {
+    flex-basis: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 0.5em;
+}
+.testimonials-carousel .custom-section .photo-wrapper img .photo-wrapper img:hover .photo-section{
+  box-shadow: none !important;
+  filter: none !important;  /* Remove drop-shadow filter */
+  transition: none !important;  /* Remove transitions */
+  transform: none !important;  /* Remove transforms */
+}
+*{
+  scroll-behavior: auto !important;
+}
 }
 
 @media screen and (max-width: 560px) {
