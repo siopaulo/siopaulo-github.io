@@ -500,7 +500,7 @@ text-align: justify;
     padding: 0;
     gap: 0.5em;
 }
-.testimonials-carousel .custom-section .photo-wrapper img .photo-wrapper img:hover .photo-section{
+.testimonials-carousel, .custom-section, .photo-wrapper img, .photo-wrapper img:hover, .photo-section {
   box-shadow: none !important;
   filter: none !important;  /* Remove drop-shadow filter */
   transition: none !important;  /* Remove transitions */
