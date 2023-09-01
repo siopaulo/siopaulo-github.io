@@ -387,7 +387,7 @@ text-align: justify;
   width: 100vw; /* Takes up the full viewport width */
   height: 100vh; /* Takes up the full viewport height */
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 10; /* Ensure it's above other content */
 }
 @keyframes fadeIn {
   0% { opacity: 0.0; }

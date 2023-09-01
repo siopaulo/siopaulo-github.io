@@ -279,24 +279,24 @@ article {
 }
 
 .hi-1 {
-  background-image: url("../comPhotos/dolomiti-62.webp");
+  background-image: url("../comPhotos/resized/dolomiti-135_resized.webp");
 }
 
 .hi-2 {
-  background-image: url("../comPhotos/norsko-1-4.webp");
+  background-image: url("../comPhotos/resized/dolomiti-62_resized.webp");
 }
 
 .hi-3 {
-  background-image: url("../comPhotos/svatba-624.webp");
+  background-image: url("../comPhotos/resized/klarka_venca_post_resized.webp");
 }
 
 
 .hi-4 {
-  background-image: url("../comPhotos/dolomiti-135.webp");
+  background-image: url("../comPhotos/resized/norsko-3-2_resized.webp");
 }
 
 .hi-5 {
-  background-image: url("../comPhotos/norsko-3-2.webp");
+  background-image: url("../comPhotos/resized/svatba_klarka_venca-384_resized.webp");
 }
 
 
@@ -398,6 +398,8 @@ article {
   -webkit-text-stroke-color: var(--black); /* outline color */
     font-size: 30px;
 }
+
+
 .card-normal,.card {
   height: 500px;
 }
@@ -442,20 +444,6 @@ article {
     opacity: 1; /* Increase the opacity to 1 on hover */
 }
   
-  .blur-background{
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 6f0px;
-    background: inherit;
-    backdrop-filter: blur(0); /* Set the initial blur effect to 0 */
-    z-index: -1;
-  }
-  .card:hover .blur-background {
-    backdrop-filter: blur(10px); /* Apply the blur effect on hover */
-}
-
 .text-container h2 {
     font-size: 2.5em;
     font-weight: 200;
