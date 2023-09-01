@@ -592,26 +592,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-  .hi-1 {
-    background-image: url("../comPhotos/resized_images_small/dolomiti-135_resized.webp");
-  }
-  
-  .hi-2 {
-    background-image: url("../comPhotos/resized_images_small/dolomiti-62_resized.webp");
-  }
-  
-  .hi-3 {
-    background-image: url("../comPhotos/resized_images_small/norsko-1-3_resized.webp");
-  }
-  
-  
-  .hi-4 {
-    background-image: url("../comPhotos/resized_images_small/norsko-3-2_resized.webp");
-  }
-  
-  .hi-5 {
-    background-image: url("../comPhotos/resized_images_small/svatba_klarka_venca-384_resized.webp");
-  }
   nav {
     padding: 3em 3em;
     font-size: 10px;
