@@ -620,21 +620,6 @@ footer {
   color: var(--red);
 }
 
-@media screen and (max-width: 750px) {
-  .footer-section {
-      width: 50%;
-      padding-left: 15px; /* Padding on smaller screens */
-      padding-right: 15px; /* Padding on smaller screens */
-  }
-  
-  .social-links {
-      flex-basis: 100%;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      gap: 0.5em;
-  }
-}
 
 @media screen and (max-width: 560px) {
   .footer-section {
@@ -650,9 +635,6 @@ footer {
 
 @media screen and (max-width: 750px) {
   
-  *{
-    animation: none !important;
-  }
     #emailForm {
       padding: 2em;
       max-width: 95%;
@@ -700,6 +682,19 @@ footer {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     -webkit-text-stroke: 1px var(--black);
   }
+  .footer-section {
+    width: 50%;
+    padding-left: 15px; /* Padding on smaller screens */
+    padding-right: 15px; /* Padding on smaller screens */
+}
+
+.social-links {
+    flex-basis: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 0.5em;
+}
 }
 
 
@@ -743,7 +738,7 @@ footer {
 }
 }
 
-@media (hover: hover){
+@media (hover: none), (hover: on-demand) {
   .hero-info h1{
     text-shadow: none;
   }
@@ -752,6 +747,12 @@ footer {
   }
   *{
     animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .card, .custom-section, #emailForm, .shadowTitle:hover, .shadowTitle, .recentTitle:hover, .recentTitle {
+    box-shadow: none !important;
+    filter: none !important;  /* Remove drop-shadow filter */
+    transition: none !important;  /* Remove transitions */
+    transform: none !important;  /* Remove transforms */
   }
 }
-
