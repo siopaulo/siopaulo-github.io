@@ -751,7 +751,3 @@ footer {
     transform: none; /* Removes the scale effect on hover */
 }
 }
-
-@media (hover: none), (hover: on-demand) {
-  
-}
