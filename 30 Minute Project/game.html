@@ -1,119 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Minute Project</title>
+    <meta charset="utf-8">
+    <title>Interactive 3D Scene with Babylon.js</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
     <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+        body, html {
             margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
-
-        /* Styling the navigation */
-        nav {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: #333;
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
         }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #333;
-        }
-
-        /* Centering Matrix on the Page */
-        main {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Styling the shapes */
-        .square {
-            width: 50px;
-            height: 50px;
-            background-color: dodgerblue;
-            border: 1px solid #333;
-            box-sizing: border-box;
-        }
-
-        .triangle {
-            width: 50px;
-            height: 43.3px; /* height of an equilateral triangle with 50px side */
-            background-color: dodgerblue;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .triangle:nth-child(odd) {
-            transform: rotateX(180deg);
-        }
-
-        .hexagon {
-            width: 57.74px;
-            height: 50px;
-            background-color: dodgerblue;
-            clip-path: polygon(50% 0%, 0% 50%, 50% 100%, 100% 100%, 100% 50%, 50% 0%);
-        }
-
-        /* Footer */
-        footer {
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9em;
-            background: #333;
-            color: white;
-        }
-
     </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="#" onclick="generateMatrix('square')">Square</a>
-            <a href="#" onclick="generateMatrix('triangle')">Triangle</a>
-            <a href="#" onclick="generateMatrix('hexagon')">Hexagon</a>
-        </nav>
-    </header>
-    <main id="matrixArea">
-        <!-- Matrix will be generated here -->
-    </main>
-    <footer>
-        30 Minute Project © 2023
-    </footer>
+    <canvas id="renderCanvas"></canvas>
     <script>
-        function generateMatrix(shapeType) {
-            let matrixArea = document.getElementById('matrixArea');
-            matrixArea.innerHTML = ''; // Clear the main content
+        // Initialize
+        const canvas = document.getElementById("renderCanvas");
+        const engine = new BABYLON.Engine(canvas, true);
 
-            let matrixSize = 5;  // 5x5 matrix for simplicity
+        const createScene = () => {
+            const scene = new BABYLON.Scene(engine);
+            const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 4, Math.PI / 2.5, 50, new BABYLON.Vector3(0, 0, 0), scene);
+            camera.attachControl(canvas, true);
+            const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
 
-            for (let i = 0; i < matrixSize * matrixSize; i++) {
-                let shape = document.createElement('div');
-                shape.classList.add(shapeType);
-                matrixArea.appendChild(shape);
+            // Skybox
+            const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", { size: 1000 }, scene);
+            const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+            skyboxMaterial.backFaceCulling = false;
+            skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://www.babylonjs-playground.com/textures/TropicalSunnyDay", scene);
+            skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+            skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+            skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+            skybox.material = skyboxMaterial;
+
+            // Terrain
+            const ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "https://www.babylonjs-playground.com/textures/heightMap.png", 100, 100, 100, 0, 10, scene, false);
+            const groundMaterial = new BABYLON.StandardMaterial("ground", scene);
+            groundMaterial.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/grass.jpg", scene);
+            ground.material = groundMaterial;
+
+            // Water
+            const waterMesh = BABYLON.Mesh.CreateGround("waterMesh", 100, 100, 32, scene, false);
+            const water = new BABYLON.WaterMaterial("water", scene, new BABYLON.Vector2(512, 512));
+            water.backFaceCulling = true;
+            water.bumpTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/waterbump.png", scene);
+            water.windForce = -10;
+            water.waterColor = new BABYLON.Color3(0.1, 0.1, 0.6);
+            water.colorBlendFactor = 0.3;
+            water.addToRenderList(skybox);
+            waterMesh.material = water;
+
+            // Hexagons
+            const hexagonPositions = [];
+            for (let i = -3; i <= 3; i++) {
+                for (let j = -3; j <= 3; j++) {
+                    const hexPoints = [];
+                    for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 3) {
+                        hexPoints.push(new BABYLON.Vector3(Math.cos(angle) * 2 + i * 4, 0, Math.sin(angle) * 2 + j * 4));
+                    }
+                    const hexagon = BABYLON.MeshBuilder.CreatePolygon("hexagon", { shape: hexPoints, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
+                    hexagon.position.y = 1; // Raise it above the ground
+                    const hexMaterial = new BABYLON.StandardMaterial("mat", scene);
+                    hexMaterial.emissiveColor = new BABYLON.Color3(Math.random(), Math.random(), Math.random());
+                    hexagon.material = hexMaterial;
+                    hexagonPositions.push(hexagon.position);
+                }
             }
-        }
 
+            // Jumping Ball
+            const ball = BABYLON.MeshBuilder.CreateSphere("ball", { diameter: 1 }, scene);
+            ball.position = new BABYLON.Vector3(0, 2, 0);  // Starting position
+
+            let currentHexagonIndex = 0;
+            const moveToNextHexagon = () => {
+                currentHexagonIndex = (currentHexagonIndex + 1) % hexagonPositions.length;
+                const nextPosition = hexagonPositions[currentHexagonIndex].add(new BABYLON.Vector3(0, 1, 0));
+                BABYLON.Animation.CreateAndStartAnimation('anim', ball, 'position', 30, 60, ball.position, nextPosition, 0);
+            };
+            setInterval(moveToNextHexagon, 2000);
+
+            // FPS Indicator
+            const advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            const fpsLabel = new BABYLON.GUI.TextBlock();
+            fpsLabel.color = "white";
+            fpsLabel.fontSize = 24;
+            fpsLabel.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+            fpsLabel.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+            advancedTexture.addControl(fpsLabel);
+
+            // Render Loop
+            engine.runRenderLoop(() => {
+                fpsLabel.text = engine.getFps().toFixed() + " fps";
+                scene.render();
+            });
+
+            window.addEventListener("resize", () => {
+                engine.resize();
+            });
+
+            return scene;
+        };
+
+        const scene = createScene();
+
+        // Execute the render loop to animate the scene
+        engine.runRenderLoop(function() {
+            scene.render();
+        });
+
+        // Listen for browser resize events and adjust the scene accordingly
+        window.addEventListener('resize', function() {
+            engine.resize();
+        });
     </script>
 </body>
-
 </html>
