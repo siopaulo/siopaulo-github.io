@@ -46,7 +46,7 @@ header {
 nav {
   width: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 4;
   padding: 1em 5em;
   display: flex;
   justify-content: space-between;
@@ -178,16 +178,19 @@ footer {
 }
 /* Styling the h2 title */
 .section-title {
-  font-size: 4.5rem;
+  font-size: 6rem;
   text-align: center;
   color: var(--pill);
-  margin-top: 5rem;
-  margin-bottom: 4rem;
-  letter-spacing: 2px;
+  letter-spacing: 7rem;
   font-weight: 800;
   text-transform: uppercase;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   transition: color 0.3s;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-indent:1em;
 }
 
 /* Adjustments to the photo section */
@@ -200,8 +203,17 @@ footer {
   padding: 1.5em;  /* Internal padding for content */
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  border: 1px solid var(--black);
+  opacity: 0;
+  transition: all 0.5s ease;
+  position: relative;
 }
 
+.photo-section.visible {
+  opacity: 1;
+  transition: all 0.5s ease;
+  bottom: 0;
+}
 .photo-separator {
   width: 100%;
   border: 0;
@@ -225,19 +237,31 @@ footer {
 .photo-wrapper:nth-child(odd) {
   flex-direction: row-reverse;
 }
-
+.firstImg{
+  opacity: 0.9;
+  transition: 0.3s;
+}
+.firstImg:hover{
+  opacity: 1;
+  border: 2px solid var(--black);
+  transition: 0.3s;
+}
 .photo-wrapper img {
   width: 60%;  
   border-radius: 8px;
   box-shadow: 6px 6px 6px 7px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
   border: 1px solid var(--black);
+  border:2px solid transparent;
 }
+
+.carousel-container img{
+  transition: none !important;
+}
+
 
 .photo-wrapper img:hover {
   cursor: pointer;
-  box-shadow: 4px 4px 8px 4px rgba(3, 0, 12, 0.6);
-  transition: 0.3s;
 }
 
 .photo-wrapper .project-description {
@@ -246,15 +270,17 @@ font-size: 1em;
 color: var(--white);
 line-height: 1.5;
 text-align: justify;
+font-family: 'Kubo Sans', sans-serif;
+
 }
 
 .project-description h4{
   text-align: center;
-  font-size: 2em;
-  color: var(--red);
-  margin-bottom: 0.5em;
-  text-shadow: 2px 2px #06060c;
-  -webkit-text-stroke-width: 1px;
+  font-size: 2.6em;
+  color: var(--white);
+  margin-bottom: 0.6em;
+  font-weight: 100;
+  font-family: 'Kubo Sans', sans-serif;
 }
 
 
@@ -270,7 +296,7 @@ text-align: justify;
   background: linear-gradient(145deg, rgba(0,0,0,0.9), rgba(10,10,10,0.9));
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  z-index: 9;
+  z-index: 3;
   clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
   font-family: 'Kubo Sans', sans-serif;
   transition: 0.5s;
@@ -348,6 +374,9 @@ text-align: justify;
   margin-bottom: 1.5rem;
 }
 
+
+
+
 .testimonials-carousel {
   width: 89%;
   margin: 2em auto;
@@ -357,6 +386,16 @@ text-align: justify;
   position: relative;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
   padding-bottom: 0.5em;
+  border: 1px solid var(--black);
+  opacity: 0;
+transition: all 0.5s ease;
+position: relative;
+}
+
+.testimonials-carousel.visible {
+opacity: 1;
+transition: all 0.5s ease;
+bottom: 0;
 }
 
 /* Testimonial item styles */
@@ -382,6 +421,15 @@ text-align: justify;
   color: var(--pill);
   display: block;  /* Change span to block level for better control */
   margin-top: 0.2em;
+  font-family: 'Kubo Sans', sans-serif;
+}
+
+
+/* CAROUSEL on click ------------------------------------------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  0% { opacity: 0.0; }
+  90% { opacity: 0.01; }
+  100% { opacity: 1; }
 }
 .carousel-modal {
   display: none; /* Initially hidden */
@@ -393,42 +441,59 @@ text-align: justify;
   width: 100vw; /* Takes up the full viewport width */
   height: 100vh; /* Takes up the full viewport height */
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-  z-index: 10; /* Ensure it's above other content */
+  z-index: 1000; /* Ensure it's above other content */
+  
 }
-@keyframes fadeIn {
-  0% { opacity: 0.0; }
-  90% { opacity: 0.01; }
-  100% { opacity: 1; }
-}
+
 .carousel-modal .carousel-container {
-  width: 80%; /* Adjust this based on your needs */
-  max-width: 600px; /* Set a maximum width if needed */
-  margin: 0 auto; /* Center it horizontally */
-  height: 400px;
-  opacity: 0;
+  width: 100%; /* Full-width */
+  max-width: 900px; /* Maximum width */
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn 0.35s forwards;
 }
 
 .carousel-container img {
-  max-width: 100%; 
+  max-width: 100%;
   height: auto;
+  object-fit: cover;  /* Cover the entire area without stretching */
 }
 
-.carousel-modal .carousel-container img:first-child {
-  display: block;
-}
-
-#morePictures{
-  color: var(--pill);
-  font-weight: bold;
-  font-size: 0.85rem;
+#morePictures {
+  color: var(--red);
+  font-weight: 100;
+  font-size: 1em;
   margin-top: 1em;
-  text-decoration: underline;
+  font-family: 'Kubo Sans', sans-serif;
+  text-align: center;  /* Center the text */
 }
 
-@media screen and (max-width: 1000px){
-  
+.slick-prev, .slick-next {
+  font-size: 24px;
+  line-height: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;  /* Center vertically */
+  transform: translateY(-50%);  /* Fine-tune vertical centering */
 }
+
+.slick-prev {
+  left: 20px !important;
+  z-index: 20;
+  color: var(--red);
+}
+
+.slick-next {
+  right: 20px !important;
+  z-index: 20;
+}
+
 @media screen and (max-width: 768px) {
 
   nav {
@@ -448,6 +513,12 @@ text-align: justify;
     background-color: rgba(0, 0, 0, 0.9);
     overflow-x: hidden;
     height: auto;
+  }
+
+  .section-title{
+    font-size: 4.5em;
+    letter-spacing:10px;
+    text-indent: 10px;
   }
 
   .custom-section {
@@ -485,7 +556,8 @@ text-align: justify;
   }
 
   .project-description h4{
-    font-size: 1.5em;
+    font-size: 1.9em;
+    margin-bottom: 1em;
   }
   .footer-section {
     width: 50%;
@@ -503,7 +575,6 @@ text-align: justify;
 .testimonials-carousel, .custom-section, .photo-wrapper img, .photo-wrapper img:hover, .photo-section {
   box-shadow: none !important;
   filter: none !important;  /* Remove drop-shadow filter */
-  transition: none !important;  /* Remove transitions */
   transform: none !important;  /* Remove transforms */
 }
 *{
@@ -520,5 +591,15 @@ text-align: justify;
 
   .social-links{
       gap: 5em;
+  }
+}
+
+@media (hover: none) {
+  body{
+    background:radial-gradient(#000,#141437);
+  }
+
+  .social-links a:hover{
+    color: inherit;
   }
 }

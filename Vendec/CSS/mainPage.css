@@ -114,7 +114,7 @@ body {
   font-family: "Poppins", sans-serif;
   position: relative;
   min-height: 100vh;
-  background-image: url('../comPhotos/resized/1.jpg');
+  background-image: url('../comPhotos/resized_images_small/1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -742,4 +742,14 @@ footer {
 .card:hover img {
     transform: none; /* Removes the scale effect on hover */
 }
+}
+
+@media (hover: none) {
+  body{
+    background:radial-gradient(#000,#141437);
+  }
+
+  .social-links a:hover{
+    color: inherit;
+  }
 }
