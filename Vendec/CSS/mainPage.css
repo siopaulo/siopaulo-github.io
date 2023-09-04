@@ -421,7 +421,7 @@ article {
     padding: 3em;  /* Increased padding for a bigger form */
     border-radius: 20px;  /* Increased for a bigger form */
     background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(28,28,28,1) 100%);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 6px 6px 8px 7px rgba(0, 0, 0, 0.3);
     max-width: 1100px;  /* Increased width for a bigger form */
     margin: 0 auto;
     margin-bottom: 60px; /* Separation from the footer */
@@ -508,10 +508,11 @@ article {
 
 
 footer {
-  background-color: #191919;
+  background:radial-gradient(#010112b3,#000000b2);
   padding: 2em 0;
   color: var(--white);
   margin-top: auto;
+  border-top: 1px solid #050505;
 }
 
 .footer-container {
@@ -579,17 +580,7 @@ footer {
 }
 
 
-@media screen and (max-width: 560px) {
-  .footer-section {
-      width: 100%;
-      padding-left: 15px; /* Padding on even smaller screens */
-      padding-right: 15px; /* Padding on even smaller screens */
-  }
 
-  .social-links{
-      gap: 5em;
-  }
-}
 
 @media screen and (max-width: 768px) {
   nav {
@@ -691,16 +682,6 @@ footer {
 .hero-info h2{
   text-shadow: none;
 }
-*{
-  animation: none !important;
-  scroll-behavior: auto !important;
-}
-.card, .custom-section, #emailForm, .shadowTitle:hover, .shadowTitle, .recentTitle:hover, .recentTitle {
-  box-shadow: none !important;
-  filter: none !important;  /* Remove drop-shadow filter */
-  transition: none !important;  /* Remove transitions */
-  transform: none !important;  /* Remove transforms */
-}
 }
 
 
@@ -717,8 +698,16 @@ footer {
       font-size: 1.1em;
   }
 }
-
 @media screen and (max-width: 560px) {
+  .footer-section {
+    width: 100%;
+    padding-left: 15px; /* Padding on even smaller screens */
+    padding-right: 15px; /* Padding on even smaller screens */
+}
+
+.social-links{
+    gap: 5em;
+}
   .card {
       flex: 1 1 100%;  /* 1 card per row on very small screens */
   }
@@ -728,20 +717,7 @@ footer {
     align-self: center; /* Align to the center to ensure it doesn't stick to the side */
     margin-top: 1em;
 }
-.card .text-container {
-      visibility: visible; 
-      opacity: 1;
-  }
 
-  .card .text-container {
-    visibility: visible; 
-    opacity: 1;
-    transition: none; /* Remove transition effects */
-}
-
-.card:hover img {
-    transform: none; /* Removes the scale effect on hover */
-}
 }
 
 @media (hover: none) {
@@ -752,4 +728,29 @@ footer {
   .social-links a:hover{
     color: inherit;
   }
+
+  *{
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .card, .custom-section, #emailForm, .shadowTitle:hover, .shadowTitle, .recentTitle:hover, .recentTitle {
+    box-shadow: none !important;
+    filter: none !important;  /* Remove drop-shadow filter */
+    transition: none !important;  /* Remove transitions */
+    transform: none !important;  /* Remove transforms */
+  }
+  .card .text-container {
+    visibility: visible; 
+    opacity: 1;
+}
+
+.card .text-container {
+  visibility: visible; 
+  opacity: 1;
+  transition: none; /* Remove transition effects */
+}
+
+.card:hover img {
+  transform: none; /* Removes the scale effect on hover */
+}
 }

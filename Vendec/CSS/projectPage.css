@@ -100,10 +100,11 @@ nav ul li:not(#burger) {
 }
 
 footer {
-    background-color: #191919;
+  background:radial-gradient(#010112b3,#000000b2);
     padding: 2em 0;
     color: var(--white);
     margin-top: auto;
+    border-top: 1px solid #050505;
 }
 
 .footer-container {
@@ -182,7 +183,7 @@ footer {
   text-align: center;
   color: var(--pill);
   letter-spacing: 7rem;
-  font-weight: 800;
+  font-weight: 100;
   text-transform: uppercase;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   transition: color 0.3s;
@@ -374,9 +375,6 @@ font-family: 'Kubo Sans', sans-serif;
   margin-bottom: 1.5rem;
 }
 
-
-
-
 .testimonials-carousel {
   width: 89%;
   margin: 2em auto;
@@ -388,8 +386,8 @@ font-family: 'Kubo Sans', sans-serif;
   padding-bottom: 0.5em;
   border: 1px solid var(--black);
   opacity: 0;
-transition: all 0.5s ease;
-position: relative;
+  transition: all 0.5s ease;
+  position: relative;
 }
 
 .testimonials-carousel.visible {
@@ -572,14 +570,7 @@ bottom: 0;
     padding: 0;
     gap: 0.5em;
 }
-.testimonials-carousel, .custom-section, .photo-wrapper img, .photo-wrapper img:hover, .photo-section {
-  box-shadow: none !important;
-  filter: none !important;  /* Remove drop-shadow filter */
-  transform: none !important;  /* Remove transforms */
-}
-*{
-  scroll-behavior: auto !important;
-}
+
 }
 
 @media screen and (max-width: 560px) {
@@ -599,7 +590,18 @@ bottom: 0;
     background:radial-gradient(#000,#141437);
   }
 
+  footer{
+    background:radial-gradient(#0000348a,#000000b6);
+  }
   .social-links a:hover{
     color: inherit;
+  }
+  .testimonials-carousel, .custom-section, .photo-wrapper img, .photo-wrapper img:hover, .photo-section {
+    box-shadow: none !important;
+    filter: none !important;  /* Remove drop-shadow filter */
+    transform: none !important;  /* Remove transforms */
+  }
+  *{
+    scroll-behavior: auto !important;
   }
 }
