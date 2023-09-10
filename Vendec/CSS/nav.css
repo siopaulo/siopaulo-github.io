@@ -1,0 +1,201 @@
+header {
+  width: 100%;
+  min-height: calc(100vh-80px);
+  overflow-x: hidden;
+}
+ul {
+  list-style: none;
+}
+nav {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  padding: 1em 5em;
+  display: flex;
+  justify-content: space-between;
+  transition: 1s;
+}
+nav h1 {
+  font-size: clamp(1.2rem, 6vw, 3rem);
+  font-weight: normal;
+  text-transform: uppercase;
+  color: var(--pill);
+  font-size: 1.3rem;
+  background-color: var(--red);
+  padding: 5px 10px;
+}
+
+nav a{
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  color: var(--white);
+}
+
+nav ul li:not(#burger) {
+  visibility: hidden;
+  margin-right: 1.5em;
+}
+
+#burger {
+  width: min-content;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+#burger span {
+  display: block;
+  height: 3px;
+  width: 22px;
+  background-color: var(--red);
+  border-radius: 200px;
+  transition: transform 0.3s 0.3s;
+}
+
+.active span:nth-of-type(1) {
+  transform: translateY(-3px) scaleX(1.3);
+}
+
+.active span:nth-of-type(3) {
+  transform: translateY(3px) scaleX(1.3);
+}
+/* Modified Section Styles */
+.custom-section {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 600px;
+    height: 100%;
+    padding: 5em;
+    background: linear-gradient(145deg, rgba(0,0,0,0.9), rgba(10,10,10,0.9));
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9;
+    font-family: 'Kubo Sans', sans-serif !important;
+    transition: 0.5s;
+    text-align: center;
+    padding: 4em 1em;
+    width: 30em;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .burger.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  
+  
+  /* Section Links */
+  .section-container {
+    padding-top: 7.5em;
+  }
+  
+  .level-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+  }
+  
+  .level-1 h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.2rem;
+  }
+  
+  
+  .level-1 a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 2.8rem; /* Increased from 2.6rem */
+    transition: color 0.3s;
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+  
+  .level-1 a:hover {
+    color: var(--red);
+  }
+  
+  .sublinks {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  
+  .sublinks.open {
+    max-height: 220px;
+    margin-top: -2em;
+    transition: 0.5s;
+  }
+  
+  .sublinks a {
+    display: block;
+    padding: 0.4em 1em; /* Adjusted padding to move it up and right */
+    font-size: 2rem;
+    color: #F61712;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .sublinks a:hover {
+    color: var(--white);
+  }
+  
+  .custom-section h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+@media screen and (max-width: 768px) {
+
+  nav {
+    padding: 3em 3em;
+    font-size: 10px;
+    transition: 1s;
+  }
+  
+  nav h1 {
+    font-size: 0.9rem;
+  }
+  section {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    height: auto;
+  }
+  .custom-section {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    border-radius: 0;
+    padding-top: 6em;
+  }
+
+  .custom-section .level-1 {
+    grid-gap: 1.2rem;
+  }
+  
+  .custom-section h3 {
+    font-size: 2.3rem;
+  }
+}
+
+@media (hover: none) {
+  .custom-section{
+    box-shadow: none !important;
+    filter: none !important;  /* Remove drop-shadow filter */
+    transform: none !important;  /* Remove transforms */
+    }
+  .sublinks,
+  .sublinks.open {
+    transition: none;  /* This removes the transition for mobiles */
+  }
+}

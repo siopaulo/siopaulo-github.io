@@ -1,0 +1,108 @@
+footer {
+    background:radial-gradient(#010112b3,#000000b2);
+    padding: 2em 0;
+    color: var(--white);
+    margin-top: auto;
+    border-top: 1px solid #050505;
+}
+  
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: calc(33.33% - 20px);
+    margin-bottom: 1.5em;
+    padding-left: 15px; /* Left padding for consistency */
+    padding-right: 15px; /* Right padding for consistency */
+}
+
+.footer-section h4 {
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--red);
+}
+
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+}
+
+.social-links {
+display: flex;
+justify-content: space-around; /* Ensuring even space around the icons */
+margin-top: 1em;  /* Space from the content above */
+gap: 1em;
+}
+
+.social-links a {
+font-size: 2em; /* Increased size */
+color: var(--white);
+margin: 0 15px; /* Increased space between each icon for better clarity */
+transition: all 0.3s ease;
+padding: 5px; /* Adjusted padding */
+text-decoration: none;
+}
+
+.social-links a:hover {
+color: var(--red);
+}
+@media screen and (max-width: 768px) {
+.footer-section {
+    width: 50%;
+    padding-left: 15px; /* Padding on smaller screens */
+    padding-right: 15px; /* Padding on smaller screens */
+}
+
+.social-links {
+    flex-basis: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 0.5em;
+}
+}
+@media screen and (max-width: 560px) {
+.footer-section {
+    width: 100%;
+    padding-left: 15px; /* Padding on even smaller screens */
+    padding-right: 15px; /* Padding on even smaller screens */
+}
+
+.social-links{
+    gap: 5em;
+}
+}
+@media (hover: none) {
+footer{
+    background:radial-gradient(#010112b3,#000000b2);
+
+}
+.social-links a:hover{
+    color: inherit;
+}
+}
+  
