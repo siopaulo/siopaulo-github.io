@@ -1,0 +1,50 @@
+.cenik-section {
+    padding: 5em 0;
+    background-color: var(--white);
+    margin: 10em 5em;
+    color: var(--black);
+}
+
+.cenik-section h2 {
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 2em;
+}
+
+.cenik-section table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.cenik-section th,
+.cenik-section td {
+    padding: 1.2em;
+    text-align: left;
+    border-bottom: 1px solid var(--pill);
+}
+
+.cenik-section th {
+    background-color: var(--pill);
+    color: var(--black);
+}
+
+.cenik-section tr:nth-child(even) td {
+    background-color: rgba(224, 212, 190, 0.3);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .cenik-section table {
+        font-size: 0.9em;
+    }
+
+    .cenik-section th,
+    .cenik-section td {
+        padding: 0.8em;
+    }
+}
