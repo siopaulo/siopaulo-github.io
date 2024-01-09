@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oko Bere Card Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Card game called Oko Bere similar to BlackJack">
+    <meta name="author" content="Pavel Vršecký">
+</head>
+    <!-- Start Game and Initial Budget Prompt -->
+    <div id="startContainer">
+        <div id="rainContainer"></div>
+        <div id="pageTitle">
+            <h1>Oko Bere</h1>
+        </div>
+        <button id="startGame" onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- Initial Budget Prompt (Initially Hidden) -->
+    <div id="initialBudgetPrompt">
+        <div id="initialBudgetBackground"></div> 
+        <div id="initialBudgetContent">
+            <label for="initialBudget">Enter Your Budget: <span id="minBudget">[min 10]</span></label>
+            <input type="number" id="initialBudget">
+            <button id="setBudget" onclick="setBudget()">Set Budget</button>
+        </div>
+    </div>
+    
+    <!-- Main Game Container (Initially Hidden) -->
+    <div id="gameWrapper" style="display: none">
+        <div id="gameBackground"></div> 
+        <div id="gameContainer">
+            <button id="exitButton" onclick="confirmExit()">
+                X
+            </button>
+            <div id="playerInfo">
+                <div id="budget">Budget: $<span id="budgetAmount"></span></div>
+                <div id="currentBetD">Current Bet: <span id="currentBet">0</span></div>
+                <span id="livesCount" hidden>3</span>
+                <div id="lives">
+                    <div>
+                        <span id="livesSpan">Buy life for 100$ </span>
+                        <button id="buyLife" onclick="buyLive()">+</button>
+                    </div>
+                    <canvas id="canvasLives"></canvas>
+                </div>
+            </div>
+            <div id="gameBoard">
+                <div id="dealerHand" class="hand"></div>
+                <div id="dealerScore" class="score"><span>Computer Score: </span></div>
+                <div id="playerHand" class="hand"></div>
+                <div id="playerScore" class="score"><span>Player Score: </span></div>
+            </div>
+            <div id="gameControls">
+                <button id="placeBet" onclick="placeBet()">Place Bet</button>
+                <button id="drawCard" onclick="drawCard(playerHand)" disabled>Draw Card</button>
+                <button id="stand" onclick="stand()" disabled>Stand</button>
+                <button id="resetGame" onclick="resetGame()">Reset Game</button>
+                <button id="newRound" onclick="newRound()" hidden>New Round</button>
+            </div>
+            <div id="messageBox"></div>
+            <div id="bettingControls" style="display: none;">
+                <div hidden>Remaining Bet Amount: <span id="remainingBetAmount">0</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Screen (Initially Hidden) -->
+    <div id="gameOverScreen">
+        <h1>Game Over</h1>
+        <p>You lost all your lives</p>
+        <button  id="startNewGame" style="display: none" onclick="startNewGame()">New Game</button>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
