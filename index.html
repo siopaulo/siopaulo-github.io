@@ -1,17 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages</title>
+    <meta description="Portfolio Pavla Vršeckého">
+    <meta keywords="Portfolio, Pavla Vršeckého, Pavel Vršecký, Frontend">
+    <title>Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(12px) brightness(0.5);
+            color: #f5f5f5;
+            text-shadow: 2px 2px 4px #000;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 3em;
+            color: #eaeaea;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        .description {
+            font-size: 1.3em;
+            color: #dcdcdc;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        a.button {
+            background-image:  radial-gradient(circle at 50% 0, #a51882, #00074b);
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border: 1px solid #48004b;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(47, 0, 255, 0.219);
+            display: inline-block;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            background-image:  radial-gradient(circle at 50% 0, #e928b9, #00074b);
+            transition: all 0.3s ease;
+        }
+
+        p a{
+            color: #f70000;
+            transition: 0.3s;
+        }
+
+        p a:hover{
+            color: #a11f1f;
+            transition: 0.3s;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .title {
+                font-size: 1.8em;
+            }
+
+            .description {
+                font-size: 1em;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 0.8em;
+            }
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <h1>Index PageE</h1>
-    <a href="https://siopaulo.github.io/siopaulo-github.io\Vendec\main.html">Herynk</a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/hello/hello.html">Hello</a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/GoogleCopy/index.html">Google Copy</a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/30%20Minute%20Project/game.html">30 Minutes Project</a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/Oko%20bere/index.html">Oko Bere</a>
+    <div class="container">
+        <div class="title">Vítejte Na Mém Portfoliu</div>
+        <div class="description">
+            Tato stránka je průřezem mé tvorby, prezentující jedny z mých nejzajímavějších projektů
+            <p>Více na mém GitHubu <a href="https://github.com/siopaulo">zde</a></p>
+        </div>
+        <a href="https://siopaulo.github.io/siopaulo-github.io/Vendec/main.html" class="button">Herynk</a>
+        <a href="https://siopaulo.github.io/siopaulo-github.io/GoogleCopy/index.html" class="button">Google Copy</a>
+        <a href="https://siopaulo.github.io/siopaulo-github.io/30%20Minute%20Project/game.html" class="button">30 Minutes Project</a>
+        <a href="https://siopaulo.github.io/siopaulo-github.io/Oko%20bere/index.html" class="button">Oko Bere</a>
+    </div>
+    
+    <canvas id="canvas"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let particles = [];
+    
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.id('canvas');
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+    
+        function draw() {
+            clear(); 
+            for (let particle of particles) {
+                particle.update();
+                particle.show();
+            }
+        }
+    
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    
+        class Particle {
+            constructor() {
+                this.x = random(width);
+                this.y = random(height);
+                this.vx = random(0.5, 2);
+                this.vy = random(-0.5, 0.5);
+                this.alpha = random(100, 150);
+            }
+    
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x > width) {
+                    this.x = 0;
+                }
+                if (this.y > height) {
+                    this.y = 0;
+                }
+                if (this.y < 0) {
+                    this.y = height;
+                }
+            }
+    
+            show() {
+                noStroke();
+                fill(255, this.alpha);
+                ellipse(this.x, this.y, 4);
+            }
+        }
+    </script>
+    
 </body>
 </html>
