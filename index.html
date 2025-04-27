@@ -1,80 +1,79 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio Pavla Vršeckého – frontend projekty & creative coding." />
-  <meta name="keywords" content="Portfolio, Pavel Vršecký, Front‑End, Web Development, Creative Coding" />
+  <meta name="description" content="Portfolio of Pavel Vršecký – frontend projects & creative coding." />
+  <meta name="keywords" content="Portfolio, Pavel Vršecký, Front-End, Web Development, Creative Coding" />
   <meta name="theme-color" content="#101522" />
   <title>Portfolio – Pavel Vršecký</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-      *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-      html{scroll-behavior:smooth}
-      body{font-family:"Poppins",sans-serif;line-height:1.6;background:#0e0f19;color:#fff;overflow-x:hidden}
-      a{color:inherit;text-decoration:none}
-      img{display:block;max-width:100%}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:"Poppins",sans-serif;line-height:1.6;background:#0e0f19;color:#fff;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
-      :root{
-          --clr-primary:#6c63ff;
-          --clr-primary-dark:#4b45c7;
-          --clr-surface:rgba(255,255,255,.06);
-          --clr-linkedin:#0a66c2;
-          --radius-lg:1.5rem;
-          --radius-full:9999px;
-          --ease-out:cubic-bezier(.215,.61,.355,1);
-      }
+    :root{
+        --clr-primary:#6c63ff;
+        --clr-primary-dark:#4b45c7;
+        --clr-surface:rgba(255,255,255,.06);
+        --clr-linkedin:#0a66c2;
+        --radius-lg:1.5rem;
+        --radius-full:9999px;
+        --ease-out:cubic-bezier(.215,.61,.355,1);
+    }
 
-      .container{width:min(90%,1100px);margin-inline:auto;padding-block:4rem}
-      .center{text-align:center}
-      .btn{display:inline-block;padding:.9rem 2.4rem;border-radius:var(--radius-full);font-weight:600;font-size:1rem;background:var(--clr-primary);transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
-      .btn:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(108,99,255,.35)}
-      .btn--outline{background:transparent;border:2px solid var(--clr-primary)}
-      .btn--outline:hover{background:var(--clr-primary);color:#0e0f19}
-      .btn--white{background:#fff;color:#0e0f19}
-      .btn--white:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,.25)}
-      .btn--linkedin{background:var(--clr-linkedin)}
-      .btn--linkedin:hover{box-shadow:0 8px 20px rgba(10,102,194,.35)}
+    .container{width:min(90%,1100px);margin-inline:auto;padding-block:4rem}
+    .center{text-align:center}
+    .btn{display:inline-block;padding:.9rem 2.4rem;border-radius:var(--radius-full);font-weight:600;font-size:1rem;background:var(--clr-primary);transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(108,99,255,.35)}
+    .btn--outline{background:transparent;border:2px solid var(--clr-primary)}
+    .btn--outline:hover{background:var(--clr-primary);color:#0e0f19}
+    .btn--white{background:#fff;color:#0e0f19}
+    .btn--white:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,.25)}
+    .btn--linkedin{background:var(--clr-linkedin)}
+    .btn--linkedin:hover{box-shadow:0 8px 20px rgba(10,102,194,.35)}
 
-      #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.75rem;padding-inline:1.25rem;text-align:center;isolation:isolate}
-      #hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:700;letter-spacing:.03em;background:linear-gradient(135deg,var(--clr-primary)10%,#b57cff 90%);-webkit-background-clip:text;color:transparent;animation:titleReveal 1.2s .4s both}
-      #hero p{font-size:clamp(1rem,2.3vw,1.35rem);max-width:40ch;margin-inline:auto;color:#d8d8d8;animation:fadeUp .9s .8s both}
-      #hero .buttons,#hero .cv-buttons{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;animation:fadeUp 1s 1.1s both}
+    #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.75rem;padding-inline:1.25rem;text-align:center;isolation:isolate}
+    #hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:700;letter-spacing:.03em;background:linear-gradient(135deg,var(--clr-primary)10%,#b57cff 90%);-webkit-background-clip:text;color:transparent;animation:titleReveal 1.2s .4s both}
+    #hero p{font-size:clamp(1rem,2.3vw,1.35rem);max-width:40ch;margin-inline:auto;color:#d8d8d8;animation:fadeUp .9s .8s both}
+    #hero .buttons,#hero .cv-buttons{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;animation:fadeUp 1s 1.1s both}
 
-      .grid{display:grid;gap:1.5rem;margin-top:3.5rem}
-      @media(min-width:600px){.grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
-      .card{position:relative;padding:2.6rem 1.6rem;border-radius:var(--radius-lg);background:var(--clr-surface);backdrop-filter:blur(8px);transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
-      .card h3{font-size:1.25rem;font-weight:600;margin-bottom:.65rem}
-      .card span{font-size:.9rem;color:#c5c5c5}
-      .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 var(--clr-primary-dark);opacity:0;transition:box-shadow .3s var(--ease-out),opacity .3s var(--ease-out)}
-      .card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.35)}
-      .card:hover::after{box-shadow:0 0 0 2px var(--clr-primary-dark);opacity:.6}
+    .grid{display:grid;gap:1.5rem;margin-top:3.5rem}
+    @media(min-width:600px){.grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+    .card{position:relative;padding:2.6rem 1.6rem;border-radius:var(--radius-lg);background:var(--clr-surface);backdrop-filter:blur(8px);transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+    .card h3{font-size:1.25rem;font-weight:600;margin-bottom:.65rem}
+    .card span{font-size:.9rem;color:#c5c5c5}
+    .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 var(--clr-primary-dark);opacity:0;transition:box-shadow .3s var(--ease-out),opacity .3s var(--ease-out)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.35)}
+    .card:hover::after{box-shadow:0 0 0 2px var(--clr-primary-dark);opacity:.6}
 
-      #bg-canvas{position:fixed;inset:0;z-index:-1}
+    #bg-canvas{position:fixed;inset:0;z-index:-1}
 
-      @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-      @keyframes titleReveal{0%{clip-path:inset(0 0 100% 0)}100%{clip-path:inset(0 0 0 0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes titleReveal{0%{clip-path:inset(0 0 100% 0)}100%{clip-path:inset(0 0 0 0)}}
   </style>
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
 
+<!-- Language Switcher -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <button onclick="setLanguage('en')" class="btn btn--white" style="padding: 0.4rem 1rem; font-size: 0.9rem;">EN</button>
+  <button onclick="setLanguage('cz')" class="btn btn--white" style="padding: 0.4rem 1rem; font-size: 0.9rem;">CZ</button>
+</div>
+
 <section id="hero" class="container">
-  <h1>Vítej v mém digitálním portfoliu</h1>
-  <p>Mrkni na výběr projektů, které zde ukazuji. Můžete si prohlídnou i můj životopis, kde rozepisuji svoji praxi</p>
+  <h1 id="hero-title">Welcome to my digital portfolio</h1>
+  <p id="hero-description">Take a look at a selection of projects I showcase here. You can also view my resume with detailed work experience.</p>
   <div class="buttons">
-    <a href="#projekty" class="btn">Projekty</a>
+    <a href="#projekty" class="btn" id="projects-button">Projects</a>
     <a href="https://github.com/siopaulo" target="_blank" rel="noopener" class="btn btn--white">GitHub</a>
-<a
-  href="https://www.linkedin.com/in/pavel-vr%C5%A1eck%C3%BD-ab54562a5/"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="btn btn--linkedin"
->
-  LinkedIn
-</a>
+    <a href="https://www.linkedin.com/in/pavel-vr%C5%A1eck%C3%BD-ab54562a5/" target="_blank" rel="noopener noreferrer" class="btn btn--linkedin">LinkedIn</a>
   </div>
   <div class="cv-buttons" style="margin-top:.75rem">
     <a href="CV_23042025_Vrsecky_CZ.pdf" download class="btn btn--outline">CV&nbsp;CZ</a>
@@ -83,47 +82,81 @@
 </section>
 
 <section id="projekty" class="container center">
-  <h2 class="sr">Projekty</h2>
+  <h2 class="sr" id="projects-title">Projects</h2>
   <div class="grid">
     <a href="https://florbalzcu-git-master-vrseckypavel1s-projects.vercel.app" target="_blank" class="card"><h3>My Team – Florbal ZČU</h3><span>School project - Nuxt3 + Vercel deploy</span></a>
     <a href="https://siopaulo.github.io/siopaulo-github.io/Vendec/main.html" target="_blank" class="card"><h3>Herynk</h3><span>Photo portfolio demo</span></a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/GoogleCopy/index.html" target="_blank" class="card"><h3>Google Copy</h3><span>Google clon</span></a>
-    <a href="https://siopaulo.github.io/siopaulo-github.io/Oko%20bere/index.html" target="_blank" class="card"><h3>Oko Bere</h3><span>Canvas minigame</span></a>
+    <a href="https://siopaulo.github.io/siopaulo-github.io/GoogleCopy/index.html" target="_blank" class="card"><h3>Google Copy</h3><span>Google clone</span></a>
+    <a href="https://siopaulo.github.io/siopaulo-github.io/Oko%20bere/index.html" target="_blank" class="card"><h3>Oko Bere</h3><span>Canvas minigame</span></a>
   </div>
 </section>
 
-<footer class="container center" style="font-size:.85rem;color:#888;padding-block:6rem 2.5rem">© <span id="year"></span> Pavel Vršecký – Built with ♡</footer>
+<footer class="container center" style="font-size:.85rem;color:#888;padding-block:6rem 2.5rem">
+  © <span id="year"></span> Pavel Vršecký – Built with ♡
+</footer>
 
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-
 <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function setLanguage(lang) {
+    if (lang === 'cz') {
+      document.documentElement.lang = 'cs';
+      document.getElementById('hero-title').textContent = 'Vítej v mém digitálním portfoliu';
+      document.getElementById('hero-description').textContent = 'Mrkni na výběr projektů, které zde ukazuji. Můžeš si také prohlédnout můj životopis s podrobnou praxí.';
+      document.getElementById('projects-button').textContent = 'Projekty';
+      document.getElementById('projects-title').textContent = 'Projekty';
+    } else {
+      document.documentElement.lang = 'en';
+      document.getElementById('hero-title').textContent = 'Welcome to my digital portfolio';
+      document.getElementById('hero-description').textContent = 'Take a look at a selection of projects I showcase here. You can also view my resume with detailed work experience.';
+      document.getElementById('projects-button').textContent = 'Projects';
+      document.getElementById('projects-title').textContent = 'Projects';
+    }
+  }
 
   gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.card').forEach((card,i)=>{
-    gsap.from(card,{opacity:0,y:40,delay:i*0.05,scrollTrigger:{trigger:card,start:'top 85%'}});
+  gsap.utils.toArray('.card').forEach((card, i) => {
+    gsap.from(card, { opacity: 0, y: 40, delay: i * 0.05, scrollTrigger: { trigger: card, start: 'top 85%' } });
   });
 
-  const hero=document.getElementById('hero');
-  hero.addEventListener('mousemove',e=>{
-    const {innerWidth:w,innerHeight:h}=window;
-    const x=(e.clientX-w/2)/(w/2),y=(e.clientY-h/2)/(h/2);
-    hero.style.transform=`rotateX(${y*6}deg) rotateY(${x*-6}deg)`;
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', e => {
+    const { innerWidth: w, innerHeight: h } = window;
+    const x = (e.clientX - w/2) / (w/2), y = (e.clientY - h/2) / (h/2);
+    hero.style.transform = `rotateX(${y * 6}deg) rotateY(${x * -6}deg)`;
   });
-  hero.addEventListener('mouseleave',()=>hero.style.transform='rotateX(0deg) rotateY(0deg)');
+  hero.addEventListener('mouseleave', () => hero.style.transform = 'rotateX(0deg) rotateY(0deg)');
 
-  let stars=[];const starCount=160;
-  function setup(){let c=createCanvas(window.innerWidth,window.innerHeight);c.id('bg-canvas');for(let i=0;i<starCount;i++){stars.push(new Star());}}
-  function windowResized(){resizeCanvas(window.innerWidth,window.innerHeight);}
-  function draw(){clear();translate(width/2,height/2);for(let s of stars){s.update();s.show();}}
-  class Star{
-    constructor(){this.init(true);}
-    init(first=false){this.x=random(-width,width);this.y=random(-height,height);this.z=first?random(width):width;this.pz=this.z;}
-    update(){this.z-=6;if(this.z<1){this.init();}}
-    show(){fill(255);noStroke();const sx=map(this.x/this.z,0,1,0,width);const sy=map(this.y/this.z,0,1,0,height);const r=map(this.z,0,width,8,0);ellipse(sx,sy,r,r);
-      const px=map(this.x/this.pz,0,1,0,width);const py=map(this.y/this.pz,0,1,0,height);this.pz=this.z;stroke(255,150);line(px,py,sx,sy);}
+  let stars = []; const starCount = 160;
+  function setup() {
+    let c = createCanvas(window.innerWidth, window.innerHeight);
+    c.id('bg-canvas');
+    for (let i = 0; i < starCount; i++) { stars.push(new Star()); }
+  }
+  function windowResized() { resizeCanvas(window.innerWidth, window.innerHeight); }
+  function draw() {
+    clear(); translate(width/2, height/2);
+    for (let s of stars) { s.update(); s.show(); }
+  }
+  class Star {
+    constructor() { this.init(true); }
+    init(first=false) { this.x = random(-width, width); this.y = random(-height, height); this.z = first ? random(width) : width; this.pz = this.z; }
+    update() { this.z -= 6; if (this.z < 1) { this.init(); } }
+    show() {
+      fill(255); noStroke();
+      const sx = map(this.x / this.z, 0, 1, 0, width);
+      const sy = map(this.y / this.z, 0, 1, 0, height);
+      const r = map(this.z, 0, width, 8, 0);
+      ellipse(sx, sy, r, r);
+      const px = map(this.x / this.pz, 0, 1, 0, width);
+      const py = map(this.y / this.pz, 0, 1, 0, height);
+      this.pz = this.z;
+      stroke(255, 150);
+      line(px, py, sx, sy);
+    }
   }
 </script>
 </body>
