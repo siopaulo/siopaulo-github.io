@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie - FASAPOLYCZ s.r.o.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+<div id="header-placeholder"></div>
+
+<main class="flex-grow pt-[4.5rem]">
+    <section class="relative h-48 md:h-72">
+        <img src="img/fasada Blovice.jpg" alt="Galerie" class="w-full h-full object-cover">
+        <div class="absolute inset-0 hero-overlay flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-white text-3xl md:text-5xl font-bold mb-4" data-aos="fade-up">Galerie našich prací</h1>
+                <p class="text-white text-lg md:text-xl opacity-90" data-aos="fade-up" data-aos-delay="200">Profesionální fasády a zateplení</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto py-16 px-4">
+        <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
+            <button class="filter-btn active px-6 py-3 rounded-full font-semibold text-sm" data-filter="all">
+                Všechny práce
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-semibold text-sm" data-filter="fasady">
+                Fasády
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-semibold text-sm" data-filter="zatepleni">
+                Zateplení
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-semibold text-sm" data-filter="rekonstrukce">
+                Rekonstrukce
+            </button>
+        </div>
+
+        <div class="gallery-masonry" id="gallery-container">
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/1c57803c-9330-45b7-9f4b-2c539990d6e9.jpeg" alt="Moderní fasáda" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Moderní fasáda</h3>
+                    <p class="text-xs opacity-90">Kompletní fasádní řešení</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="zatepleni" data-aos="zoom-in">
+                <img src="img/3f0b21ef-4cbf-4e50-a613-87358cb77414.jpeg" alt="Zateplení objektu" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Zateplení objektu</h3>
+                    <p class="text-xs opacity-90">Tepelná izolace s omítkou</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/177fd539-b6a7-4aad-8da9-3d86e83322a7.jpeg" alt="Fasádní systém" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasádní systém</h3>
+                    <p class="text-xs opacity-90">Kvalitní provedení</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="rekonstrukce" data-aos="zoom-in">
+                <img src="img/a4568d91-de51-4f2e-a7bc-c4d35bf68022.jpeg" alt="Rekonstrukce fasády" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Rekonstrukce fasády</h3>
+                    <p class="text-xs opacity-90">Kompletní obnova</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/b439d739-2918-4106-bb9d-820011c12095.jpeg" alt="Fasáda Blovice" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda Blovice</h3>
+                    <p class="text-xs opacity-90">Rodinný dům</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="zatepleni" data-aos="zoom-in">
+                <img src="img/c6e6473b-52e3-46c8-a5f7-585113593157.jpeg" alt="Zateplení s omítkou" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Zateplení s omítkou</h3>
+                    <p class="text-xs opacity-90">Energeticky úsporné řešení</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/e26c7afc-51c9-403a-960f-4162a374601b.jpeg" alt="Fasádní práce" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasádní práce</h3>
+                    <p class="text-xs opacity-90">Precizní provedení</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="rekonstrukce" data-aos="zoom-in">
+                <img src="img/fcf1dd95-dc96-44bc-82c6-6c20db54d4f7.jpeg" alt="Rekonstrukce objektu" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Rekonstrukce objektu</h3>
+                    <p class="text-xs opacity-90">Kompletní renovace</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/fadada srn 11.jpg" alt="Fasáda SRN 11" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Projekt v SRN</h3>
+                    <p class="text-xs opacity-90">Mezinárodní zkušenosti</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/Fasada Blovice 2.jpg" alt="Fasáda Blovice 2" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda Blovice 2</h3>
+                    <p class="text-xs opacity-90">Druhá etapa projektu</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/Fasáda Blovice 3.jpg" alt="Fasáda Blovice 3" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda Blovice 3</h3>
+                    <p class="text-xs opacity-90">Finální úpravy</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/fasada Blovice.jpg" alt="Fasáda Blovice" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda Blovice</h3>
+                    <p class="text-xs opacity-90">Referenční projekt</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/fasada srn 10.jpg" alt="Fasáda SRN 10" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Projekt v Německu</h3>
+                    <p class="text-xs opacity-90">Kvalitní provedení</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/Fasada srn 12.jpg" alt="Fasáda SRN 12" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda SRN 12</h3>
+                    <p class="text-xs opacity-90">Německý standard</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/Fasada srn 13.jpg" alt="Fasáda SRN 13" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda SRN 13</h3>
+                    <p class="text-xs opacity-90">Moderní design</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="fasady" data-aos="zoom-in">
+                <img src="img/fasada srn 14.jpg" alt="Fasáda SRN 14" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Fasáda SRN 14</h3>
+                    <p class="text-xs opacity-90">Pokročilé technologie</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="rekonstrukce" data-aos="zoom-in">
+                <img src="img/srn rekonstrukce klima+tepelně izolační omítka 2.jpg" alt="Rekonstrukce s klimatickou omítkou" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Klimatická omítka</h3>
+                    <p class="text-xs opacity-90">Tepelná izolace</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="rekonstrukce" data-aos="zoom-in">
+                <img src="img/srn rekonstrukce klima+tepelně izolační omítka 3.jpg" alt="Rekonstrukce s tepelnou izolací" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Tepelná izolace</h3>
+                    <p class="text-xs opacity-90">Kompletní rekonstrukce</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="rekonstrukce" data-aos="zoom-in">
+                <img src="img/srn rekonstrukce klima+tepelně izolační omítka.jpg" alt="Rekonstrukce s izolační omítkou" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3 class="font-bold text-sm mb-1">Izolační omítka</h3>
+                    <p class="text-xs opacity-90">Energetické úspory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev">&#10094;</button>
+            <img id="lightbox-img" src="" alt="">
+            <button class="lightbox-nav lightbox-next">&#10095;</button>
+            <div class="lightbox-counter">
+                <span id="lightbox-current">1</span> / <span id="lightbox-total">1</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+<script src="loadComponents.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCurrent = document.getElementById('lightbox-current');
+        const lightboxTotal = document.getElementById('lightbox-total');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+
+        let currentImageIndex = 0;
+        let visibleImages = [];
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+
+                updateVisibleImages();
+            });
+        });
+
+        function updateVisibleImages() {
+            visibleImages = Array.from(galleryItems)
+                .filter(item => item.style.display !== 'none')
+                .map(item => ({
+                    src: item.querySelector('img').src,
+                    alt: item.querySelector('img').alt
+                }));
+            lightboxTotal.textContent = visibleImages.length;
+        }
+
+        updateVisibleImages();
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                if (this.style.display === 'none') return;
+
+                const img = this.querySelector('img');
+                const visibleIndex = Array.from(galleryItems)
+                    .filter(item => item.style.display !== 'none')
+                    .indexOf(this);
+
+                currentImageIndex = visibleIndex;
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCurrent.textContent = currentImageIndex + 1;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        function showImage(index) {
+            if (index >= 0 && index < visibleImages.length) {
+                currentImageIndex = index;
+                lightboxImg.src = visibleImages[currentImageIndex].src;
+                lightboxImg.alt = visibleImages[currentImageIndex].alt;
+                lightboxCurrent.textContent = currentImageIndex + 1;
+            }
+        }
+
+        lightboxPrev.addEventListener('click', function() {
+            showImage(currentImageIndex > 0 ? currentImageIndex - 1 : visibleImages.length - 1);
+        });
+
+        lightboxNext.addEventListener('click', function() {
+            showImage(currentImageIndex < visibleImages.length - 1 ? currentImageIndex + 1 : 0);
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    lightboxPrev.click();
+                    break;
+                case 'ArrowRight':
+                    lightboxNext.click();
+                    break;
+            }
+        });
+
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.getAttribute('data-src') || img.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        });
+    });
+</script>
+</body>
+</html>
