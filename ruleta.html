@@ -6,128 +6,67 @@
     <title>Wheel of Names</title>
     <style>
         :root{
-            --bg:#0b0b10;--panel:#11121a;--panel-2:#151728;--text:#eaeef6;--muted:#9aa4b2;
-            --brand:#5b8cff;--brand-2:#7b5bff;--shadow:0 10px 30px rgba(0,0,0,.45);
+            --bg:#0b0b10;--panel:#11121a;--panel-2:#151728;--text:#eaeef6;--muted:#9aa4b2;--brand:#5b8cff;--brand-2:#7b5bff;--shadow:0 10px 30px rgba(0,0,0,.45);
         }
         *{box-sizing:border-box}
         html,body{height:100%}
-        body{
-            margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Helvetica,Arial,sans-serif;
-            background:
-                    radial-gradient(1200px 800px at 10% 10%, #12152a 0%, #0b0b10 55%),
-                    radial-gradient(1200px 800px at 90% 90%, #0c132a 0%, #0b0b10 55%);
-            color:var(--text);
-        }
+        body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 10% 10%, #12152a 0%, #0b0b10 55%), radial-gradient(1200px 800px at 90% 90%, #0c132a 0%, #0b0b10 55%);color:var(--text);}
 
-        /* Header */
-        .header{
-            position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.8rem;
-            padding:.75rem 1rem;border-bottom:1px solid #1e2235;
-            background:linear-gradient(180deg, rgba(21,24,39,.65), rgba(17,18,26,.65));
-            backdrop-filter:blur(10px)
-        }
-        .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.2px}
-        .logo-icon{
-            width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:white;
-            background:conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2));
-            box-shadow:0 0 0 3px #0f1220
-        }
-        .spacer{flex:1}
-        .toolbar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
-        .btn{
-            appearance:none;border:1px solid #2a2f45;background:#13172a;color:var(--text);
-            padding:.55rem .8rem;border-radius:.6rem;cursor:pointer;font-size:.9rem;transition:.2s;
-            display:inline-flex;align-items:center;gap:.5rem
-        }
+        .header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.6rem .8rem;border-bottom:1px solid #1e2235;background:linear-gradient(180deg, rgba(21,24,39,.75), rgba(17,18,26,.75));backdrop-filter:blur(8px);flex-wrap:wrap}
+        .logo{display:flex;align-items:center;gap:.5rem;font-weight:700;letter-spacing:.2px;font-size:1rem}
+        .logo-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:white;background:conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2));box-shadow:0 0 0 2px #0f1220;font-size:.9rem}
+        .toolbar{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
+        .btn{appearance:none;border:1px solid #2a2f45;background:#13172a;color:var(--text);padding:.45rem .7rem;border-radius:.55rem;cursor:pointer;font-size:.85rem;transition:.2s;display:inline-flex;align-items:center;gap:.4rem}
         .btn:hover{background:#1a1f3a;border-color:#394064}
-        .btn.primary{
-            background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;
-            box-shadow:0 6px 18px rgba(91,140,255,.25)
-        }
+        .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;box-shadow:0 4px 12px rgba(91,140,255,.25)}
         .btn.primary:hover{transform:translateY(-1px)}
 
-        /* Layout */
-        .app{display:grid;grid-template-columns:1fr 360px;gap:1rem;max-width:1200px;margin:0 auto;padding:1rem}
+        .app{display:grid;grid-template-columns:1fr 340px;gap:1rem;max-width:1200px;margin:0 auto;padding:1rem}
         @media (max-width: 980px){.app{grid-template-columns:1fr}}
-
-        /* Stage */
-        .stage{
-            background:linear-gradient(180deg,#0f1220,#0b0b10);border:1px solid #1e2235;border-radius:20px;
-            box-shadow:var(--shadow);display:grid;place-items:center;position:relative;overflow:hidden
+        @media (max-width: 500px){
+            .logo{font-size:.9rem}
+            .toolbar{width:100%;justify-content:flex-start}
         }
+
+        .stage{background:linear-gradient(180deg,#0f1220,#0b0b10);border:1px solid #1e2235;border-radius:20px;box-shadow:var(--shadow);display:grid;place-items:center;position:relative;overflow:hidden}
         .wheel-wrap{position:relative;inline-size:min(88vw,540px);aspect-ratio:1;max-inline-size:720px}
         canvas{width:100%;height:100%;display:block}
 
-        /* Pointer at top */
         .pointer{position:absolute;inset-inline:0;top:6px;display:grid;place-items:center;pointer-events:none;}
-        .pointer .arrow{
-            width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;
-            border-top:28px solid var(--brand);
-            filter:drop-shadow(0 6px 10px rgba(91,140,255,.45));
-        }
+        .pointer .arrow{width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-top:26px solid var(--brand);filter:drop-shadow(0 6px 10px rgba(91,140,255,.45));}
 
-        /* Center button */
         .hub{position:absolute;inset:0;display:grid;place-items:center;}
-        .spin-btn{
-            width:86px;height:86px;border-radius:50%;border:none;cursor:pointer;
-            background:radial-gradient(circle at 30% 30%, #ffffff, #dbe5ff);color:#111;font-weight:800;letter-spacing:.5px;
-            box-shadow:0 12px 28px rgba(255,255,255,.15), inset 0 0 0 5px #2a2f45;transition:.2s;
-        }
+        .spin-btn{width:80px;height:80px;border-radius:50%;border:none;cursor:pointer;background:radial-gradient(circle at 30% 30%, #ffffff, #dbe5ff);color:#111;font-weight:800;letter-spacing:.5px;box-shadow:0 10px 22px rgba(255,255,255,.15), inset 0 0 0 4px #2a2f45;transition:.2s;}
         .spin-btn:active{transform:scale(.98)}
 
-        /* Sidebar */
-        .panel{
-            background:linear-gradient(180deg,#101325,#0c0f1d);border:1px solid #1e2235;border-radius:20px;
-            padding:1rem;box-shadow:var(--shadow)
-        }
+        .panel{background:linear-gradient(180deg,#101325,#0c0f1d);border:1px solid #1e2235;border-radius:20px;padding:1rem;box-shadow:var(--shadow)}
         .panel h3{margin:.2rem 0 1rem;font-size:.95rem;color:var(--muted);font-weight:600}
         .row{display:flex;gap:.5rem}
-        .input{
-            flex:1;min-width:0;border:1px solid #2a2f45;background:#0f1326;color:var(--text);
-            padding:.75rem .9rem;border-radius:.6rem;font-size:.95rem
-        }
+        .input{flex:1;min-width:0;border:1px solid #2a2f45;background:#0f1326;color:var(--text);padding:.65rem .8rem;border-radius:.55rem;font-size:.95rem}
         .input:focus{outline:none;border-color:#3c4a7a;box-shadow:0 0 0 3px rgba(91,140,255,.2)}
+
         .list{display:grid;gap:.5rem;margin-top:1rem;max-height:45vh;overflow:auto;padding-right:.25rem}
-        .chip{
-            display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.6rem;
-            background:#0e1224;border:1px solid #1f2742;border-radius:.75rem;padding:.55rem .7rem
-        }
-        .swatch{width:18px;height:18px;border-radius:4px;border:1px solid #0003}
+        .chip{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.6rem;background:#0e1224;border:1px solid #1f2742;border-radius:.7rem;padding:.45rem .6rem}
+        .swatch{width:16px;height:16px;border-radius:4px;border:1px solid #0003}
         .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        .x{background:none;border:none;color:#94a0b8;font-size:18px;cursor:pointer}
+        .x{background:none;border:none;color:#94a0b8;font-size:16px;cursor:pointer}
         .x:hover{color:#fff}
-        .subgrid{display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:center;margin-top:1rem}
+
+        .subgrid{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;margin-top:1rem}
         .slider{width:100%}
-        .hint{font-size:.85rem;color:var(--muted)}
-        .stat{font-size:.85rem;color:var(--muted)}
+        .hint{font-size:.8rem;color:var(--muted)}
+        .stat{font-size:.8rem;color:var(--muted)}
 
-        /* Modals */
         .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:50}
-        .card{
-            background:linear-gradient(180deg,#0f1328,#0d1020);border:1px solid #222a44;border-radius:18px;
-            padding:1.25rem 1.25rem 1.4rem;max-width:92vw;width:420px;text-align:center;box-shadow:var(--shadow)
-        }
-        .title{
-            font-size:1.35rem;margin:.2rem 0 1rem;background:linear-gradient(90deg,var(--brand),var(--brand-2));
-            -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.3px
-        }
+        .card{background:linear-gradient(180deg,#0f1328,#0d1020);border:1px solid #222a44;border-radius:18px;padding:1.25rem 1.25rem 1.4rem;max-width:92vw;width:420px;text-align:center;box-shadow:var(--shadow)}
+        .title{font-size:1.35rem;margin:.2rem 0 1rem;background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.3px}
         .winner{font-size:2rem;font-weight:900}
-        .row-actions{display:flex;gap:.5rem;justify-content:center;margin-top:.75rem}
-
-        /* Footer */
-        .footer{
-            position:sticky;bottom:0;z-index:10;display:flex;align-items:center;justify-content:center;
-            padding:.6rem 1rem;border-top:1px solid #1e2235;
-            background:linear-gradient(180deg, rgba(17,18,26,.85), rgba(11,11,16,.85));
-            backdrop-filter:blur(8px);font-size:.85rem;color:#9aa4b2
-        }
-        .footer strong{color:#eaeef6}
+        .ok{margin-top:1rem}
     </style>
 </head>
 <body>
 <header class="header">
     <div class="logo"><div class="logo-icon">W</div><div>wheelofnames.com</div></div>
-    <div class="spacer"></div>
     <div class="toolbar">
         <button class="btn" id="btnNew">🆕 New</button>
         <button class="btn" id="btnShare">🔗 Share</button>
@@ -146,9 +85,9 @@
     </section>
 
     <aside class="panel">
-        <h3>Entries <span class="stat">• <span id="entryCount">0</span></span></h3>
+        <h3>Entries <span class="stat">• results: <span id="resultsCount">0</span></span></h3>
         <div class="row">
-            <input id="entryInput" class="input" placeholder="Type a name and press Enter" />
+            <input id="entryInput" class="input" placeholder="Type name and press Enter" />
             <button id="addBtn" class="btn">+ Add</button>
         </div>
 
@@ -164,36 +103,26 @@
     </aside>
 </main>
 
-<!-- Winner modal -->
-<div id="modalWin" class="modal" role="dialog" aria-modal="true">
+<div id="modal" class="modal" role="dialog" aria-modal="true">
     <div class="card">
-        <div class="title">🎉 Winner</div>
+        <div class="title">🎉 Winner!</div>
         <div id="winnerName" class="winner"></div>
-        <div class="row-actions">
-            <button id="closeWin" class="btn primary">OK</button>
-        </div>
+        <button id="closeModal" class="btn ok">OK</button>
     </div>
 </div>
 
-<!-- Share modal -->
-<div id="modalShare" class="modal" role="dialog" aria-modal="true" style="display:none">
-    <div class="card" style="text-align:left">
-        <div class="title" style="text-align:center">🔗 Share</div>
-        <label class="hint">Link</label>
-        <input id="shareLink" class="input" readonly style="margin-top:.4rem" />
-        <div class="row-actions">
+<div id="shareModal" class="modal">
+    <div class="card">
+        <div class="title">Share</div>
+        <input id="shareLink" class="input" value="https://wheelofnames.com/session/123" readonly />
+        <div style="display:flex;gap:.5rem;margin-top:1rem;justify-content:center;">
             <button id="copyLink" class="btn primary">Copy</button>
-            <button id="cancelShare" class="btn">Cancel</button>
+            <button id="closeShare" class="btn">Cancel</button>
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    Tip: add a trailing space to rig a name. <span style="width:.6rem"></span><strong>Last rigged wins.</strong>
-</footer>
 
 <script>
-    // ======= Elements =======
     const wheel = document.getElementById('wheel');
     const ctx = wheel.getContext('2d');
     const entryInput = document.getElementById('entryInput');
@@ -201,20 +130,19 @@
     const listEl = document.getElementById('list');
     const spinBtn = document.getElementById('spinBtn');
     const spinQuick = document.getElementById('spinQuick');
-    const modalWin = document.getElementById('modalWin');
+    const modal = document.getElementById('modal');
     const winnerNameEl = document.getElementById('winnerName');
-    const closeWin = document.getElementById('closeWin');
+    const closeModal = document.getElementById('closeModal');
+    const resultsCount = document.getElementById('resultsCount');
     const durationEl = document.getElementById('duration');
     const durValEl = document.getElementById('durVal');
     const btnNew = document.getElementById('btnNew');
     const btnShare = document.getElementById('btnShare');
-    const entryCount = document.getElementById('entryCount');
-    const modalShare = document.getElementById('modalShare');
-    const shareLink = document.getElementById('shareLink');
+    const shareModal = document.getElementById('shareModal');
+    const closeShare = document.getElementById('closeShare');
     const copyLink = document.getElementById('copyLink');
-    const cancelShare = document.getElementById('cancelShare');
+    const shareLink = document.getElementById('shareLink');
 
-    // ======= Canvas sizing =======
     function sizeCanvas(){
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         const s = Math.min(wheel.parentElement.clientWidth, 1000);
@@ -227,65 +155,47 @@
     }
     window.addEventListener('resize', sizeCanvas);
 
-    // ======= State =======
-    let entries = [];                 // keep strings AS IS (including a possible trailing space)
-    let currentRotation = 0;          // radians
+    let entries = [];
+    let currentRotation = 0;
     let spinning = false;
     let idle = true;
+    let idleSpeed = 0.0045;
+
     const TAU = Math.PI * 2;
 
-    // ======= Utils =======
-    function colorAt(i, n){ const h = (i / Math.max(1,n)) * 360; return `hsl(${h} 75% 55%)`; }
-    function normalize(a){ a = a % TAU; if (a < 0) a += TAU; return a; }
-    function hasTrailingSpace(str){ return /\s$/.test(str); }
-
-    // Keep trailing space ONLY on the last rigged entry (the last one that ends with ' ')
-    function normalizeRigged(){
-        let last = -1;
-        for (let i = entries.length - 1; i >= 0; i--) {
-            if (entries[i].endsWith(' ')) { last = i; break; }
-        }
-        if (last === -1) return; // none rigged
-        entries = entries.map((v,i)=> i === last ? (v.trimEnd() + ' ') : v.trimEnd());
+    function colorAt(i, n){
+        const h = (i / n) * 360;
+        return `hsl(${h} 75% 55%)`;
     }
 
-    // ======= Entries =======
+    function normalize(a){ a = a % TAU; if (a < 0) a += TAU; return a; }
+
+    function hasTrailingSpace(str){ return /\s$/.test(str); }
+
     function addEntryRaw(value){
         if(!value || !value.trim()) return;
-        if (hasTrailingSpace(value)) {
-            // strip trailing spaces from ALL previous entries, keep only the new one rigged
+        const rigged = hasTrailingSpace(value);
+        if(rigged){
             entries = entries.map(v => v.replace(/\s+$/,''));
         }
         entries.push(value);
         renderList(); drawWheel();
     }
-    function removeEntryAt(idx){
-        entries.splice(idx,1);
-        renderList(); drawWheel();
-    }
 
-    // ======= Drawing =======
+    function removeEntryAt(idx){ entries.splice(idx,1); renderList(); drawWheel(); }
+
     function drawWheel(){
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const W = wheel.width / dpr, H = wheel.height / dpr;
-        const cx = W/2, cy = H/2, r = Math.min(W,H)/2 - 18;
-
+        const W = wheel.width / (window.devicePixelRatio? Math.min(window.devicePixelRatio,2):1);
+        const H = wheel.height / (window.devicePixelRatio? Math.min(window.devicePixelRatio,2):1);
+        const cx = W/2, cy = H/2;
+        const r = Math.min(W,H)/2 - 18;
         ctx.clearRect(0,0,W,H);
-
         const g = ctx.createRadialGradient(cx,cy, r*0.1, cx,cy, r*1.05);
         g.addColorStop(0,'#0f1224'); g.addColorStop(1,'#07080f');
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx,cy,r+14,0,TAU); ctx.fill();
-
-        if(entries.length === 0){
-            ctx.fillStyle = '#1c2038'; ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.fill();
-            return;
-        }
-
-        const n = entries.length;
-        const aPer = TAU / n;
-
+        if(entries.length === 0){ ctx.fillStyle = '#1c2038'; ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.fill(); return; }
+        const n = entries.length; const aPer = TAU / n;
         for (let i = 0; i < n; i++) {
-            // začátek segmentu bez -aPer/2
             const start = currentRotation + i * aPer;
             const end = start + aPer;
 
@@ -300,7 +210,7 @@
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
-            // text doprostřed segmentu
+            // text
             ctx.save();
             ctx.translate(cx, cy);
             ctx.rotate(start + aPer / 2);
@@ -309,12 +219,10 @@
             ctx.font = '700 16px system-ui';
             const label = entries[i].replace(/\s+$/, '');
             const text = label.length > 22 ? label.slice(0, 22) + '…' : label;
-            ctx.fillText(text, 0, -r + 40); // o kousek blíž ke středu než dřív
+            ctx.fillText(text, 0, -r * 0.75);
             ctx.restore();
         }
 
-
-        // center hub
         ctx.beginPath(); ctx.arc(cx,cy,48,0,TAU);
         const cg = ctx.createLinearGradient(0,cy-48,0,cy+48);
         cg.addColorStop(0,'#e7efff'); cg.addColorStop(1,'#c9d7ff');
@@ -322,131 +230,63 @@
         ctx.lineWidth = 6; ctx.strokeStyle = '#2a2f45'; ctx.stroke();
     }
 
-    // ======= Spin =======
     const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
     function spinStrong(){
         if(entries.length===0 || spinning) return;
-
-        // Ensure only last rigged remains (covers loaded links / manual edits)
-        normalizeRigged();
-
         spinning = true; idle = false;
-
-        // winner: last with space, else random
-        let targetIdx = -1;
-        for(let i=entries.length-1;i>=0;i--){ if(entries[i].endsWith(' ')){ targetIdx = i; break; } }
-        if(targetIdx === -1){ targetIdx = Math.floor(Math.random()*entries.length); }
-
-        const n = entries.length;
+        let rigIdx = -1;
+        for(let i=entries.length-1;i>=0;i--){ if(hasTrailingSpace(entries[i])){ rigIdx = i; break; } }
+        const n = entries.length; const spins = 5 + Math.random()*2;
+        let targetIdx = rigIdx !== -1 ? rigIdx : Math.floor(Math.random()*n);
         const aPer = TAU / n;
-        const spins = 5 + Math.random()*2;
-
-        // We want currentRotation + targetIdx*aPer == 0 (mod TAU) at the end,
-        // i.e., currentRotation_end == -targetIdx*aPer + k*TAU (choose k so target is ahead of current).
         const baseTurns = Math.floor(currentRotation / TAU) * TAU;
-        let target = baseTurns + spins*TAU - targetIdx * aPer;
+        const targetCenter = -Math.PI/2 - targetIdx * aPer;
+        let target = baseTurns + spins * TAU + targetCenter;
         while (target <= currentRotation) target += TAU;
-
-        const start = currentRotation;
-        const dur = parseFloat(durationEl.value) * 1000;
-        const t0 = performance.now();
-
+        const start = currentRotation; const dur = parseFloat(durationEl.value) * 1000; const t0 = performance.now();
         function tick(now){
-            const t = Math.min(1, (now - t0) / dur);
-            const v = easeOutCubic(t);
+            const t = Math.min(1,(now-t0)/dur); const v = easeOutCubic(t);
             currentRotation = start + (target - start) * v;
             drawWheel();
-            if(t < 1){
-                requestAnimationFrame(tick);
-            } else {
-                // Snap to the exact target to avoid any easing residue
-                currentRotation = target;
-                drawWheel();
-                spinning = false; idle = true;
-                showWinner(entries[targetIdx].trimEnd());
-            }
+            if(t<1) requestAnimationFrame(tick);
+            else { currentRotation = target; drawWheel(); spinning=false; idle=true; showWinner(entries[targetIdx].replace(/\s+$/,'')); }
         }
         requestAnimationFrame(tick);
     }
 
-    // gentle idle rotation
-    function loop(){ if(idle && !spinning){ currentRotation += 0.0045; } drawWheel(); requestAnimationFrame(loop); }
+    function loop(){ if(idle && !spinning){ currentRotation += idleSpeed; } drawWheel(); requestAnimationFrame(loop); }
 
-    // ======= UI wiring =======
+    function showWinner(name){
+        winnerNameEl.textContent = name;
+        modal.style.display = 'flex';
+    }
+
     function renderList(){
         listEl.innerHTML = '';
-        entries.forEach((val, i)=>{
-            const chip = document.createElement('div'); chip.className = 'chip';
-            chip.innerHTML = `
-          <div class="swatch" style="background:${colorAt(i, Math.max(entries.length,1))}"></div>
-          <div class="name" title="${val}">${val.replace(/\s+$/,'')}</div>
-          <button class="x" aria-label="Remove">×</button>
-        `;
-            chip.querySelector('.x').onclick = ()=> removeEntryAt(i);
-            listEl.appendChild(chip);
+        entries.forEach((v,i)=>{
+            const chip=document.createElement('div');
+            chip.className='chip';
+            const sw=document.createElement('div');sw.className='swatch';sw.style.background=colorAt(i,entries.length);
+            const nm=document.createElement('div');nm.className='name';nm.textContent=v.replace(/\s+$/,'');
+            const rm=document.createElement('button');rm.className='x';rm.textContent='×';rm.onclick=()=>removeEntryAt(i);
+            chip.append(sw,nm,rm);listEl.appendChild(chip);
         });
-        entryCount.textContent = String(entries.length);
+        resultsCount.textContent=entries.length;
     }
 
-    function showWinner(name){ winnerNameEl.textContent = name; modalWin.style.display = 'flex'; }
-    closeWin.onclick = ()=> modalWin.style.display = 'none';
-    modalWin.addEventListener('click', (e)=>{ if(e.target === modalWin) modalWin.style.display='none'; });
+    addBtn.onclick=()=>{ addEntryRaw(entryInput.value); entryInput.value=''; }
+    entryInput.addEventListener('keypress',e=>{ if(e.key==='Enter'){ addEntryRaw(entryInput.value); entryInput.value=''; } });
+    spinBtn.onclick=spinStrong; spinQuick.onclick=spinStrong;
+    closeModal.onclick=()=>{ modal.style.display='none'; }
+    btnNew.onclick=()=>{ entries=[]; renderList(); drawWheel(); }
+    btnShare.onclick=()=>{ shareModal.style.display='flex'; }
+    closeShare.onclick=()=>{ shareModal.style.display='none'; }
+    copyLink.onclick=()=>{ shareLink.select(); document.execCommand('copy'); }
 
-    addBtn.onclick = ()=>{ addEntryRaw(entryInput.value); entryInput.value=''; entryInput.focus(); };
-    entryInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ addBtn.click(); }});
+    durationEl.oninput=()=>{ durValEl.textContent=parseFloat(durationEl.value).toFixed(1); }
 
-    spinBtn.onclick = spinStrong;
-    spinQuick.onclick = spinStrong;
-    durationEl.addEventListener('input', ()=>{ durValEl.textContent = Number(durationEl.value).toFixed(1); });
-
-    // Tap stage to spin (ignore taps on inputs/buttons)
-    document.querySelector('.stage').addEventListener('click', (e)=>{
-        const tag = (e.target.tagName||'').toLowerCase();
-        if(['input','button'].includes(tag)) return;
-        spinStrong();
-    });
-
-    // New (reset)
-    btnNew.onclick = ()=>{ entries = []; renderList(); drawWheel(); };
-
-    // Share
-    function buildShareLink(){
-        const data = encodeURIComponent(JSON.stringify(entries));
-        const base = (location.origin + location.pathname).replace(/#.*$/,'');
-        return `${base}?names=${data}`;
-    }
-    btnShare.onclick = ()=>{
-        shareLink.value = buildShareLink();
-        modalShare.style.display = 'flex';
-    };
-    cancelShare.onclick = ()=> modalShare.style.display='none';
-    modalShare.addEventListener('click', (e)=>{ if(e.target === modalShare) modalShare.style.display='none'; });
-    copyLink.onclick = async ()=>{
-        try{
-            await navigator.clipboard.writeText(shareLink.value);
-            copyLink.textContent='Copied'; setTimeout(()=>copyLink.textContent='Copy',1200);
-        }catch(e){
-            copyLink.textContent='Failed'; setTimeout(()=>copyLink.textContent='Copy',1200);
-        }
-    };
-
-    // Load from shared link (and normalize rigged state)
-    (function initFromQuery(){
-        const p = new URLSearchParams(location.search);
-        const n = p.get('names');
-        if(!n) return;
-        try{
-            const arr = JSON.parse(decodeURIComponent(n));
-            if(Array.isArray(arr)){ entries = arr.slice(0,200).map(String); normalizeRigged(); }
-        }catch(e){}
-    })();
-
-    // ======= Init =======
-    sizeCanvas();
-    renderList();
-    durValEl.textContent = Number(durationEl.value).toFixed(1);
-    requestAnimationFrame(loop); // idle spin from start
+    sizeCanvas(); renderList(); requestAnimationFrame(loop);
 </script>
 </body>
 </html>
